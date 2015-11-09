@@ -21,7 +21,8 @@
         {!!Html::style('librerias/layout/css/style.css')!!}
         {!!Html::style('librerias/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')!!}
         {!!Html::style('librerias/layout/css/custom.css')!!}
-        
+        {!!Html::style('css/sweetalert.css')!!}
+
         @yield('css')
 
         <!--BEGIN Nuestros estilos -->
@@ -268,7 +269,7 @@
             </div>
             <!-- END FOOTER -->
         </footer>
-
+        {!!Html::script('js/dependencias/sweetalert-dev.js')!!}
         {!!Html::script('librerias/jquery.min.js')!!}
         {!!Html::script('librerias/jquery-migrate.min.js')!!}
         {!!Html::script('librerias/bootstrap/js/bootstrap.min.js')!!}
