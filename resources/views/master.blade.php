@@ -106,7 +106,7 @@
                                 </a>
                                 <ul class="dropdown-menu pull-left">
                                     <li>
-                                        <a href="/listado">
+                                        <a href="/docentes">
                                             <i class="fa fa-bookmark-o"></i> Listado </a>
                                     </li>
                                 </ul>
@@ -157,12 +157,8 @@
                                 </a>
                                 <ul class="dropdown-menu pull-left">
                                     <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-bookmark-o"></i> Section 1 </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-user"></i> Section 2 </a>
+                                        <a href="/alumnos">
+                                            <i class="fa fa-mortar-board"></i> Listado </a>
                                     </li>
                                 </ul>
                             </li>

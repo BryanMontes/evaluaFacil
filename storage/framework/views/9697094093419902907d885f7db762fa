@@ -1,0 +1,28 @@
+<?php $__env->startSection('contenedor'); ?>
+
+<?php echo Html::style('css/select.css'); ?>
+
+<?php echo Html::style('css/evaluaciones.css'); ?>
+
+<div class="row">
+    <div class="col-md-12 pad">
+        <label class="col-md-12 bold">Seleccione el bimestre deseado</label>
+    </div>
+    <div class="col-md-12">
+        
+    </div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+
+<?php $__env->startSection('js'); ?>
+<?php echo Html::script('js/dependencias/select.js'); ?>
+
+<?php echo Html::script('js/dependencias/Chart.js'); ?>
+
+<?php echo Html::script('js/evaluaciones/evaluaciones.js'); ?>
+
+
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
