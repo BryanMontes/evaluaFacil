@@ -34,8 +34,10 @@ Route::get('/seleccionBimestre', ['as' => 'seleccionBimestre', 'uses' => 'Evalua
 Route::get('/nuevaCaptura', ['as' => 'nuevaCaptura', 'uses' => 'Evaluaciones\NuevaCapturaController@index']);
 
 /*Docentes*/
-Route::get('/listado', ['as' => 'listado', 'uses' => 'Docentes\DocentesController@index']);
+Route::get('/docentes', ['as' => 'docentes', 'uses' => 'Docentes\DocentesController@index']);
 
+/*Alumnos*/
+Route::get('/alumnos', ['as' => 'alumnos', 'uses' => 'Alumnos\AlumnosController@index']);
 
 
 

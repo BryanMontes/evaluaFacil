@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head BEGIN -->
+    <head>
+        <meta charset="utf-8">
+        <title>Evalua Fácil | CET III</title>
+        <!--Escalado para moviles-->
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!--Escalado para moviles-->
+
+        <!-- Fonts START -->
+        <?php echo Html::style('css/fonts.css'); ?>
+
+        <!-- Fonts END -->
+
+        <!-- Global styles START -->
+        <?php echo Html::style('librerias/font-awesome/css/font-awesome.min.css'); ?>
+
+        <?php echo Html::style('librerias/bootstrap/css/bootstrap.min.css'); ?>
+
+        <?php echo Html::style('css/bootsnipp.min.css'); ?>
+
+        <?php echo Html::style('librerias/css/components.css'); ?>
+
+        <?php echo Html::style('librerias/layout/css/style.css'); ?>
+
+        <?php echo Html::style('librerias/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css'); ?>
+
+        <?php echo Html::style('librerias/layout/css/custom.css'); ?>
+
+        
+        <?php echo $__env->yieldContent('css'); ?>
+
+        <!--BEGIN Nuestros estilos -->
+        <?php echo Html::style('css/master.css'); ?>
+
+        <!--END Nuestros estilos -->
+
+    </head>
+    <body>
+
+        <div class="pre-header gris">
+            <div class="container" style="width: 95% !important; ">
+                <div class="row">
+                    <!-- BEGIN TOP BAR LEFT PART -->
+                    <div class="col-md-3 col-sm-3 additional-shop-info text-right">
+
+                        <ul class="list-unstyled list-inline text-left">
+<!--                            <a href="/"><img src="<?php echo asset('images/logo.png'); ?>" style="width: 200px; height: 80px;"></a>-->
+                            <a href="/"><h1 class="bold">EvaluaFácil</h1></a>
+                        </ul>
+
+                    </div>
+                    <!-- END TOP BAR LEFT PART -->
+                    <!-- BEGIN TOP BAR MENU -->
+                    <div class="col-md-7 col-xs-7 additional-shop-info">
+
+                        <?php if(Session::get('usuario')): ?>
+                        <ul class="nav navbar-nav ">
+                            <li class="classic-menu-dropdown no_pad">
+                                <a data-close-others="true" data-hover="megamenu-dropdown" href="javascript:;" data-toggle="dropdown" class="hover-initialized bold">
+                                    Reportes <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-left">
+                                    <li>
+                                        <a href="/consolidado">
+                                            <i class="fa fa-bookmark-o"></i> Consolidado de reportes </a>
+                                    </li>
+                                    <li>
+                                        <a href="/reportes">
+                                            <i class="fa fa-user"></i> Reportes General </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-puzzle-piece"></i> Section 3 </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="classic-menu-dropdown no_pad">
+                                <a data-close-others="true" data-hover="megamenu-dropdown" href="javascript:;" data-toggle="dropdown" class="hover-initialized bold">
+                                    Indicadores E.<i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-left">
+                                    <li>
+                                        <a href="/evaluaciones">
+                                            <i class="fa fa-bookmark-o"></i> Evaluaciones </a>
+                                    </li>
+                                    <li>
+                                        <a href="/seleccionBimestre">
+                                            <i class="fa fa-user"></i> Selección de bimestre </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-puzzle-piece"></i> Section 3 </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-gift"></i> Section 4 </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-table"></i> Section 5 </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="classic-menu-dropdown no_pad">
+                                <a data-close-others="true" data-hover="megamenu-dropdown" href="javascript:;" data-toggle="dropdown" class="hover-initialized bold">
+                                    Docentes<i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-left">
+                                    <li>
+                                        <a href="/listado">
+                                            <i class="fa fa-bookmark-o"></i> Listado </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="classic-menu-dropdown no_pad">
+                                <a data-close-others="true" data-hover="megamenu-dropdown" href="javascript:;" data-toggle="dropdown" class="hover-initialized bold">
+                                    Grupos<i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-left">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-bookmark-o"></i> Section 1 </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-user"></i> Section 2 </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-puzzle-piece"></i> Section 3 </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="classic-menu-dropdown no_pad">
+                                <a data-close-others="true" data-hover="megamenu-dropdown" href="javascript:;" data-toggle="dropdown" class="hover-initialized bold">
+                                    Administración<i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-left">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-bookmark-o"></i> Section 1 </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-user"></i> Section 2 </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav">
+                            <li class="classic-menu-dropdown no_pad">
+                                <a data-close-others="true" data-hover="megamenu-dropdown" href="javascript:;" data-toggle="dropdown" class="hover-initialized bold">
+                                    Alumnos<i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu pull-left">
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-bookmark-o"></i> Section 1 </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;">
+                                            <i class="fa fa-user"></i> Section 2 </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <?php endif; ?>
+
+                    </div>
+                    <?php if(!Session::get('usuario')): ?>
+                    <div class="col-md-2 col-xs-2 additional-shop-info text-center" id="loginRegister">
+                        <div ng-controller="iniciarSesion" id="login">
+                            <div class="col-md-6">
+                                <h4 ng-click="iniciarS()" style="cursor: pointer; line-height: 34px;color:black;" id="Ingresar">Ingresar</h4>
+                            </div>
+
+
+
+                            <!--modal-->
+                            <script type="text/ng-template" id="inicioSesion">
+                                <div class="modal-header">
+                                <h3 class="modal-title col-md-11 col-xs-11">Iniciar Sesión</h3>
+                                <div class="glyphicon glyphicon-remove" ng-click="ok()" style="cursor:pointer;"></div>
+                                </div>
+
+                                <div class="col-md-6 col-md-offset-3 form-group input-group" style="margin-top:2%;">
+                                <input type="text" name="usuario" ng-model="sesion.usuario" id="usuario" class="form-control" placeholder="Usuario">
+                                </div>
+
+
+                                <div class="col-md-6 col-md-offset-3 form-group input-group">
+                                <input name="password" ng-model="sesion.password" id="password" class="form-control" placeholder="Contraseña" type="password">
+                                <a ng-click="Recuperar_password()">¿Olvidaste tu contraseña?</a>
+
+                                </div>
+
+                                </div>
+                                <div class="modal-footer">
+
+                                <button class="btn btn-primary center-block" ng-click="ingresar()">INGRESAR</button>
+                                <ul ng-show="erroresIniciarS.length > 0" class="alert alert-danger text-center" style="margin-top: 10px;" ng-cloak>
+                                <li ng-repeat="error in erroresIniciarS">{{error.tipoError}}</li>
+                                </ul>
+                                </div>
+                            </script>
+                            <!-- End modal-->
+
+
+                        </div>
+                    </div>
+
+                    <?php else: ?>
+                    <div class="col-md-2 col-sm-2 additional-shop-info text-center" id="loginRegister2" style="font-size: 21px">
+                        <ul class="nav navbar-nav pull-right" ng-controller="iniciarSesion">
+                            <li class="dropdown dropdown-user">
+                                <a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
+                                    <div style="display: none;" id="sessionID"><?php echo e(Session::get('access_token')); ?></div>
+                                    <span class="username username-hide-on-mobile"><?php echo e(Session::get('usuario')); ?> </span>
+                                    <i class="fa fa-angle-down"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-default">
+                                    <li>
+                                        <a href="/perfil">
+                                            <i class="fa fa-user"></i> Mi Perfil
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/cambiarPassword">
+                                            <i class="fa fa-exchange"></i> Cambiar mi contraseña
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="javascript:;" ng-click="salir()"><i class="fa fa-sign-out"></i> Salir de la sesión</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <?php endif; ?>
+                    <!-- END TOP BAR MENU -->
+                </div>
+
+            </div>
+
+            <hr style="margin: 0px;">  
+        </div>
+
+        <div class="container">
+            <div class="content">
+                <?php echo $__env->yieldContent('contenedor'); ?>
+            </div>
+        </div>
+        <footer>            
+            <div class="footer text-center segundo-pie">
+                <div class="container">
+                    <div class="row">
+                        <!-- BEGIN COPYRIGHT -->
+                        <div class="col-md-12 col-sm-12 padding-top-10">
+                            <a href="/">Aviso de Privacidad</a> | ® Derechos reservados a CET III
+                        </div>
+                        <!-- END COPYRIGHT -->
+                    </div>
+                </div>
+            </div>
+            <!-- END FOOTER -->
+        </footer>
+
+        <?php echo Html::script('librerias/jquery.min.js'); ?>
+
+        <?php echo Html::script('librerias/jquery-migrate.min.js'); ?>
+
+        <?php echo Html::script('librerias/bootstrap/js/bootstrap.min.js'); ?>
+
+        <!-- END CORE PLUGINS -->
+
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        <?php echo Html::script('librerias/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js'); ?>
+
+        <?php echo Html::script('librerias/assets/global/plugins/jquery-validation/js/jquery.validate.min.js'); ?>
+
+        <?php echo Html::script('librerias/assets/global/plugins/jquery-validation/js/additional-methods.min.js'); ?>
+
+        <?php echo Html::script('librerias/assets/global/plugins/select2/select2.min.js'); ?>
+
+        <?php echo Html::script('librerias/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js'); ?>
+
+        <?php echo Html::script('librerias/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js'); ?>
+
+        <?php echo Html::script('librerias/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js'); ?>
+
+        <?php echo Html::script('librerias/assets/global/plugins/ckeditor/ckeditor.js'); ?>
+
+        <?php echo Html::script('librerias/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js'); ?>
+
+        <?php echo Html::script('librerias/assets/global/plugins/bootstrap-markdown/lib/markdown.js'); ?>
+
+
+        
+        
+        <?php echo Html::script('librerias/assets/global/scripts/metronic.js'); ?>
+
+        <?php echo Html::script('librerias/assets/admin/layout/scripts/layout.js'); ?>
+
+        <?php echo Html::script('librerias/assets/admin/layout/scripts/quick-sidebar.js'); ?>
+
+        <?php echo Html::script('librerias/assets/admin/layout/scripts/demo.js'); ?>
+
+        <?php echo Html::script('librerias/assets/admin/pages/scripts/form-validation.js'); ?>
+
+        
+
+        <!-- END PAGE LEVEL STYLES -->
+
+        <?php echo Html::script('js/dependencias/angular.min.js'); ?>
+
+        <?php echo Html::script('js/dependencias/animate.js'); ?>
+
+        <?php echo Html::script('js/dependencias/angular-local-storage.min.js'); ?>
+
+        <?php echo Html::script('js/dependencias/ui-bootstrap-tpls-0.13.4.js'); ?>
+
+        <?php echo Html::script('js/services/servicios.js'); ?>
+
+        <?php echo Html::script('js/login/login.js'); ?>
+
+
+        <script>
+            angular.bootstrap(document.getElementById("loginRegister"), ["loginRegister"]);
+            angular.bootstrap(document.getElementById("loginRegister2"), ["loginRegister"]);
+        </script>
+        <?php echo $__env->yieldContent('js'); ?>
+    </body>
+</html>
