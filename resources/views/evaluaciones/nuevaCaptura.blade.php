@@ -1,0 +1,223 @@
+@extends('master')
+
+@section('contenedor')
+
+{!!Html::style('css/select.css')!!}
+{!!Html::style('css/nueva.css')!!}
+
+<div class="row">
+        <div class="col-md-12 col-xs-12 pad">
+        <div class="col-md-5 col-xs-5 contorno text-center caja_blanca">
+            <span class="bold">Asistencia</span>
+            <div id="canvas-holder" style="margin-top: 20px">
+                <canvas id="asistencia" width="150" height="150"/>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Valor</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>Varios</td>
+                        <td>10</td>
+                        <td>60%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-2 col-xs-2"></div>
+        <div class="col-md-5 col-xs-5 contorno text-center caja_blanca">
+            <span class="bold">Participación</span>
+            <div id="canvas-holder" style="margin-top: 20px">
+                <canvas id="participacion" width="150" height="150"/>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Valor</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>Varios</td>
+                        <td>10</td>
+                        <td>60%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-5 col-xs-5 contorno text-center caja_blanca">
+            <span class="bold">Desempeño</span>
+            <div id="canvas-holder" style="margin-top: 20px">
+                <canvas id="desempeno" width="150" height="150"/>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Valor</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>Varios</td>
+                        <td>10</td>
+                        <td>60%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2 col-xs-2"></div>
+        <div class="col-md-5 col-xs-5 contorno text-center caja_blanca">
+            <span class="bold">Comprensión Lectora</span>
+            <div id="canvas-holder" style="margin-top: 20px">
+                <canvas id="lectora" width="150" height="150"/>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Valor</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>Varios</td>
+                        <td>10</td>
+                        <td>60%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-md-5 col-xs-5 contorno text-center caja_blanca">
+            <span class="bold">Comprensión Matemática</span>
+            <div id="canvas-holder" style="margin-top: 20px">
+                <canvas id="matematica" width="150" height="150"/>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Valor</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>Varios</td>
+                        <td>10</td>
+                        <td>60%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-2 col-xs-2"></div>
+        <div class="col-md-5 col-xs-5 contorno text-center caja_blanca">
+            <span class="bold">Convivencia Escolar</span>
+            <div id="canvas-holder" style="margin-top: 20px">
+                <canvas id="escolar" width="150" height="150"/>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Valor</th>
+                        <th>Porcentaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>100%</td>
+                    </tr>
+                    <tr>
+                        <td>Total de alumnos</td>
+                        <td>35</td>
+                        <td>30%</td>
+                    </tr>
+                    <tr>
+                        <td>Varios</td>
+                        <td>10</td>
+                        <td>60%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+@stop
+
+
+@section('js')
+{!!Html::script('js/dependencias/select.js')!!}
+{!!Html::script('js/dependencias/Chart.js')!!}
+{!!Html::script('js/reportes/nueva.js')!!}
+
+@stop
