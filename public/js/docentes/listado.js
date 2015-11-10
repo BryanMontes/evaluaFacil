@@ -1,6 +1,6 @@
 'use strict';
 angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'servicios'])
-        .controller('listado', function ($scope, localStorageService, $http, $uibModal, loginServices, $filter) {
+        .controller('listado', function ($scope, localStorageService, $http, $uibModal, loginServices, $filter, server) {
 
             $scope.listarDocente = [];
             $scope.editar = [];
@@ -15,7 +15,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                 if (localStorageService.length() != 0) {
 
                     $http({
-                        url: 'http://nkubunt.cloudapp.net:3000/api/faculty-members',
+                        url: server.serverUrl + '/api/faculty-members',
                         method: "GET",
                         headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
@@ -35,7 +35,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             /*editarDocente: edita el docente seleccionado, se envia el ID y se manda al modalInstanse el objeto del docente*/
             $scope.editarDocente = function (id) {
                 $http({
-                    url: 'http://nkubunt.cloudapp.net:3000/api/faculty-members/' + id,
+                    url: server.serverUrl + '/api/faculty-members/' + id,
                     method: "GET",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
@@ -52,7 +52,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             /*recuperarPasswordDocente: edita el password de un docente seleccionado, se envia el ID y se manda al modalInstanse el objeto del docente*/
             $scope.recuperarPasswordDocente = function (id) {
                 $http({
-                    url: 'http://nkubunt.cloudapp.net:3000/api/faculty-members/' + id,
+                    url: server.serverUrl + '/api/faculty-members/' + id,
                     method: "GET",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
@@ -129,7 +129,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             };
         })
         /*InstanciaDocente: funcionalidad de todos los modals para crear o editar un docente*/
-        .controller('InstanciaDocente', function ($scope, $uibModalInstance, items, $http, loginServices, localStorageService) {
+        .controller('InstanciaDocente', function ($scope, $uibModalInstance, items, $http, loginServices, localStorageService, server) {
             $scope.docente = {};
             $scope.docente.rol = "teacher";
             $scope.editar = items;
@@ -140,7 +140,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             $scope.guardar = function () {
                 if ($scope.docente.contrasena == $scope.docente.confirmContrasena) {
                     $http({
-                        url: 'http://nkubunt.cloudapp.net:3000/api/faculty-members',
+                        url: server.serverUrl + '/api/faculty-members',
                         method: "PUT",
                         headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
@@ -180,7 +180,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             /*guardar: edita un docente enviando los parametros a continuación*/
             $scope.guardarEditar = function () {
                 $http({
-                    url: 'http://nkubunt.cloudapp.net:3000/api/faculty-members/' + $scope.editar.id,
+                    url: server.serverUrl + '/api/faculty-members/' + $scope.editar.id,
                     method: "PUT",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
@@ -217,7 +217,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             $scope.recuperarPasswordDocente = function () {
                 if ($scope.recuperarPassword.nuevoPassword == $scope.recuperarPassword.confirmarPassword) {
                     $http({
-                        url: 'http://nkubunt.cloudapp.net:3000/api/faculty-members/' + $scope.recuperarPassword.id,
+                        url: server.serverUrl + '/api/faculty-members/' + $scope.recuperarPassword.id,
                         method: "PUT",
                         headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},

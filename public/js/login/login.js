@@ -1,5 +1,5 @@
 angular.module('loginRegister', ['ui.bootstrap', 'LocalStorageModule', 'servicios'])
-        .controller('iniciarSesion', function ($scope, $uibModal, $http, localStorageService, loginServices) {
+        .controller('iniciarSesion', function ($scope, $uibModal, $http, localStorageService, loginServices, server) {
             $scope.animationsEnabled = true;
 
 
@@ -24,11 +24,11 @@ angular.module('loginRegister', ['ui.bootstrap', 'LocalStorageModule', 'servicio
             $scope.toggleAnimation = function () {
                 $scope.animationsEnabled = !$scope.animationsEnabled;
             }
-            $scope.salir=function(){
+            $scope.salir = function () {
                 loginServices.salirSession();
             }
         })
-        .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, $http, items, localStorageService, loginServices) {
+        .controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, $http, items, localStorageService, loginServices, server) {
             $scope.sesion = {};
             $scope.items = items;
             $scope.selected = {
@@ -47,7 +47,7 @@ angular.module('loginRegister', ['ui.bootstrap', 'LocalStorageModule', 'servicio
                 if ($scope.sesion.usuario != undefined && $scope.sesion.password != undefined) {
 
                     $http({
-                        url: 'http://nkubunt.cloudapp.net:3000/oauth/token',
+                        url: server.serverUrl + '/oauth/token',
                         method: "POST",
                         data: "grant_type=password&username=" + $scope.sesion.usuario + "&password=" + $scope.sesion.password,
                         headers: {'Authorization': 'Basic d2ViY2xpZW50OnBhc3N3b3Jk',
@@ -56,7 +56,7 @@ angular.module('loginRegister', ['ui.bootstrap', 'LocalStorageModule', 'servicio
                         if (localStorageService.isSupported) {
                             localStorageService.set("session", data);
                             localStorageService.set("usuario", $scope.sesion.usuario);
-                            loginServices.guardarSession();
+                            loginServices.tipoUsuario();
                         }
 
                     }).error(function (error, status, headers, config) {

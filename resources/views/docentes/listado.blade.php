@@ -15,25 +15,28 @@
             <input type="button" class="btn btn-primary" ng-click="agregarDocenteModal()" value="+ Agregar">
         </div>
         <div class="col-md-12">
+            <div>
+                <h3>Listado de docentes <i class="fa fa-gavel "></i></h3>
+            </div>
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
-            <div class="portlet box blue">
+            <div class="portlet box blue" ng-show="listarDocente.length > 0" ng-cloak="">
                 <div class="portlet-body">
-                    <table class="table table-striped table-hover table-bordered" ng-cloak="">
+                    <table class="table table-striped table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
                                             order('first_name', reverse)">Nombre(s) &nbsp;<i class="fa fa-sort"></i></a>
                                 </th>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                    order('last_name', reverse)">Apellido Paterno &nbsp;<i class="fa fa-sort"></i></a></th>
+                                            order('last_name', reverse)">Apellido Paterno &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                    order('user.username', reverse)">Usuario &nbsp;<i class="fa fa-sort"></i></a></th>
+                                            order('user.username', reverse)">Usuario &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-3"><a href="" ng-click="reverse = !reverse;
-                                    order('age', reverse)">Asignaciones &nbsp;<i class="fa fa-sort"></i></a></th>
+                                            order('age', reverse)">Asignaciones &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-3">Opciones</th>
                             </tr>
                         </thead>
-                        <tbody  ng-show="listarDocente.length > 0">
+                        <tbody>
                             <tr ng-repeat="docente in listarDocente">
                                 <td>
                                     @{{docente.first_name}}
@@ -60,6 +63,9 @@
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div ng-show="listarDocente.length == 0" class="pad" ng-cloak="">
+                <h3>Por el momento no hay docentes capturados.</h3>
             </div>
             <!-- END EXAMPLE TABLE PORTLET-->
         </div>
@@ -192,22 +198,22 @@
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                    <label class="col-md-3">Nombre de usuario:</label>
-                    <div class="col-md-9">
-                        <input type="email" class="form-control" ng-model="recuperarPassword.user.username" disabled="">
-                    </div>
+                <label class="col-md-3">Nombre de usuario:</label>
+                <div class="col-md-9">
+                <input type="email" class="form-control" ng-model="recuperarPassword.user.username" disabled="">
+                </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                    <label class="col-md-3">Nueva Contraseña:</label>
-                    <div class="col-md-9">
-                        <input type="password" class="form-control" ng-model="recuperarPassword.nuevoPassword" maxlength="10">
-                    </div>
+                <label class="col-md-3">Nueva Contraseña:</label>
+                <div class="col-md-9">
+                <input type="password" class="form-control" ng-model="recuperarPassword.nuevoPassword" maxlength="10">
+                </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                    <label class="col-md-3">Confirmar Contraseña:</label>
-                    <div class="col-md-9">
-                        <input type="password" class="form-control" ng-model="recuperarPassword.confirmarPassword" maxlength="10">
-                    </div>
+                <label class="col-md-3">Confirmar Contraseña:</label>
+                <div class="col-md-9">
+                <input type="password" class="form-control" ng-model="recuperarPassword.confirmarPassword" maxlength="10">
+                </div>
                 </div>
 
                 </div>

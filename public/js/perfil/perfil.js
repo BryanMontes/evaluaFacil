@@ -1,29 +1,56 @@
 'use strict';
 angular.module('perfil', ['ui.bootstrap', 'LocalStorageModule', 'servicios'])
-        .controller('informacionPerfil', function ($scope, localStorageService, $http, loginServices) {
+        .controller('informacionPerfil', function ($scope, localStorageService, $http, loginServices,server) {
 
             $scope.perfil = {};
             if (localStorageService.length() != 0) {
                 $http({
-                    url: 'http://nkubunt.cloudapp.net:3000/api/account/me',
+                    url: server.serverUrl + '/api/account/me',
                     method: "GET",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                 }).success(function (data) {
                     if (data) {
-                        $scope.perfil.email = data.email;
-                        $scope.perfil.telefono = data.contact_number;
-                        $scope.perfil.nombre = data.first_name;
-                        $scope.perfil.apellido_paterno = data.last_name;
-                        $scope.perfil.puesto = data.user.role;
+                        $scope.perfil = data;
                     }
                 }).error(function (error, status, headers, config) {
                     if (error == "Unauthorized") {
                         loginServices.refrescarToken();
                     }
                 })
-            }else{
+            } else {
                 loginServices.salirSession();
+            }
+
+            $scope.editarPerfil = function () {
+                $http({
+                    url: server.serverUrl + '/api/faculty-members/' + $scope.perfil.id,
+                    method: "PUT",
+                    headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                    data: "first_name=" + $scope.perfil.first_name + "&last_name=" + $scope.perfil.last_name +
+                            "&email=" + $scope.perfil.email + "&contact_number=" + $scope.perfil.contact_number +
+                            "&title="+$scope.perfil.title
+                }).success(function (data) {
+                    if (data) {
+                        swal({
+                            title: "Éxito",
+                            text: "Tus cambios han sido modificados correctamente.",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonText: "Ok",
+                            closeOnConfirm: true,
+                        }, function (isConfirm) {
+                            if (isConfirm) {
+                                location.reload();
+                            }
+                        })
+                    }
+                }).error(function (error, status, headers, config) {
+                    if (error == "Unauthorized") {
+                        loginServices.refrescarToken();
+                    }
+                })
             }
 
         })

@@ -14,6 +14,9 @@
             <input type="button" class="btn btn-primary" ng-click="agregarAlumnoModal()" value="+ Agregar">
         </div>
         <div class="col-md-12">
+            <div>
+                <h3>Listado de Alumnos <i class="fa fa-child"></i></h3>
+            </div>
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
             <div class="portlet box blue">
                 <div class="portlet-body">

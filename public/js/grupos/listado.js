@@ -1,27 +1,26 @@
 'use strict';
-angular.module('alumnos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'servicios'])
+angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'servicios'])
         .controller('listado', function ($scope, localStorageService, $http, $uibModal, loginServices, $filter, server) {
-
-            $scope.listarAlumno = [];
+            
+            $scope.listarGrupo = [];
             $scope.editar = [];
-
-            /*orderBy: ordena los alumnos por los campos seleccionados*/
+            /*orderBy: ordena los grupos por los campos seleccionados*/
             var orderBy = $filter('orderBy');
             $scope.order = function (predicate, reverse) {
-                $scope.listarAlumno = orderBy($scope.listarAlumno, predicate, reverse);
+                $scope.listarGrupo = orderBy($scope.listarGrupo, predicate, reverse);
             };
             $scope.order('first_name', false);
-            /*listarAlumnos: lista todos los alumnos registrados*/
-            $scope.listarAlumnos = function () {
+            /*listarGrupos: lista todos los grupos registrados*/
+            $scope.listarGrupos = function () {
                 if (localStorageService.length() != 0) {
-//                    $scope.id_group
+                    /*ESTA API DEBE CAMBIARSE POR LOS GRUPOS EXISTENTES*/
                     $http({
-                        url: server.serverUrl + '/api/students/in-group/' + document.location.href.split("/")[document.location.href.split("/").length - 1],
+                        url: server.serverUrl + '/api/school-groups',
                         method: "GET",
                         headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                     }).success(function (data) {
-                        $scope.listarAlumno = data.data;
+                        $scope.listarGrupo = data;
                     }).error(function (error, status, headers, config) {
                         if (error == "Unauthorized") {
                             loginServices.refrescarToken();
@@ -30,52 +29,19 @@ angular.module('alumnos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 's
                 }
             }
 
-            $scope.borrarAlumno = function (id) {
-                swal({
-                    title: "Atención",
-                    text: "¿Está seguro que desea dar de baja al alumno?",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonText: "Ok",
-                    closeOnConfirm: true,
-                }, function (isConfirm) {
-                    if (isConfirm) {
-                        $http({
-                            url: server.serverUrl + '/api/students/' + id,
-                            method: "DELETE",
-                            headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
-                                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-                        }).success(function (data) {
-                            swal({
-                                title: "Éxito!",
-                                text: "El alumno ha sido borrado correctamente",
-                                type: "success",
-                                showCancelButton: false,
-                                confirmButtonText: "Ok",
-                                closeOnConfirm: true,
-                            }, function (isConfirm) {
-                                if (isConfirm) {
-                                    location.reload();
-                                }
-                            })
-                        }).error(function (error, status, headers, config) {
-                            if (error == "Unauthorized") {
-                                loginServices.refrescarToken();
-                            }
-                        });
-                    }
-                })
+            $scope.borrarGrupo = function (id) {
+                console.log(id);
             }
-            /*editarAlumno: edita el alumno seleccionado, se envia el ID y se manda al modalInstanse el objeto del alumno*/
-            $scope.editarAlumno = function (id) {
+            /*editarGrupo: edita el Grupo seleccionado, se envia el ID y se manda al modalInstanse el objeto del Grupo*/
+            $scope.editarGrupo = function (id) {
                 $http({
-                    url: server.serverUrl + '/api/students/' + id,
+                    url: server.serverUrl + '/api/school-groups/' + id,
                     method: "GET",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                 }).success(function (data) {
-                    $scope.editar = data.data;
-                    $scope.editarAlumnoModal();
+                    $scope.editar = data;
+                    $scope.editarGrupoModal();
                 }).error(function (error, status, headers, config) {
                     if (error == "Unauthorized") {
                         loginServices.refrescarToken();
@@ -83,16 +49,18 @@ angular.module('alumnos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 's
                 });
             }
 
+            /*recuperarPasswordGrupo: edita el password de un Grupo seleccionado, se envia el ID y se manda al modalInstanse el objeto del Grupo*/
+
 
             $scope.animationsEnabled = true;
 
-            /*agregarAlumnoModal: abre el modal para agregar un alumno*/
-            $scope.agregarAlumnoModal = function (size) {
+            /*agregarGrupoModal: abre el modal para agregar un Grupo*/
+            $scope.agregarGrupoModal = function (size) {
 
                 var modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,
-                    templateUrl: 'agregarAlumno',
-                    controller: 'InstanciaAlumno',
+                    templateUrl: 'agregarGrupo',
+                    controller: 'InstanciaGrupo',
                     size: size,
                     resolve: {
                         items: function () {
@@ -105,13 +73,13 @@ angular.module('alumnos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 's
                 });
             }
 
-            /*editarAlumnoModal: abre el modal para editar un alumno, se envia en items el objeto posteriormente creado en editarAlumno*/
-            $scope.editarAlumnoModal = function (size) {
+            /*editarGrupoModal: abre el modal para editar un Grupo, se envia en items el objeto posteriormente creado en editarGrupo*/
+            $scope.editarGrupoModal = function (size) {
 
                 var modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,
-                    templateUrl: 'editarAlumno',
-                    controller: 'InstanciaAlumno',
+                    templateUrl: 'editarGrupo',
+                    controller: 'InstanciaGrupo',
                     size: size,
                     resolve: {
                         items: function () {
@@ -128,30 +96,27 @@ angular.module('alumnos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 's
                 $scope.animationsEnabled = !$scope.animationsEnabled;
             };
         })
-        /*InstanciaAlumno: funcionalidad de todos los modals para crear o editar un alumno*/
-        .controller('InstanciaAlumno', function ($scope, $uibModalInstance, items, $http, loginServices, localStorageService, server) {
-
-
-            $scope.alumno = {};
-            $scope.alumno.school_group_id = document.location.href.split("/")[document.location.href.split("/").length - 1];
-            $scope.alumno.gender = "M";
+        /*InstanciaGrupo: funcionalidad de todos los modals para crear o editar un Grupo*/
+        .controller('InstanciaGrupo', function ($scope, $uibModalInstance, items, $http, loginServices, localStorageService, server) {
+            $scope.grupo = {};
+            $scope.grupo.grade_number = '1';
             $scope.editar = items;
-            $scope.listarAlumno = [];
+            $scope.recuperarPassword = items;
+            $scope.listargrupo = [];
 
-            /*guardar: guarda un alumno enviando los parametros a continuación*/
-            $scope.guardar = function () {
+            /*guardar: guarda un grupo enviando los parametros a continuación*/
+            $scope.guardarGrupo = function () {
                 $http({
-                    url: server.serverUrl + '/api/students/',
+                    url: server.serverUrl + '/api/school-groups',
                     method: "PUT",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                    data: "first_name=" + $scope.alumno.first_name + "&last_name=" + $scope.alumno.last_name + "&mothers_name=" + $scope.alumno.mothers_name +
-                            "&school_group_id=" + $scope.alumno.school_group_id + "&gender=" + $scope.alumno.gender
+                    data: "grade_number=" + $scope.grupo.grade_number + "&group_name=" + $scope.grupo.group_name.toUpperCase()
                 }).success(function (data) {
                     if (data) {
                         swal({
                             title: "Éxito",
-                            text: "El alumno " + $scope.alumno.first_name + " ha sido agregado correctamente",
+                            text: "El grupo " + $scope.grupo.grade_number + " " + $scope.grupo.group_name.toUpperCase() + " ha sido agregado correctamente",
                             type: "success",
                             showCancelButton: false,
                             confirmButtonText: "Ok",
@@ -167,21 +132,22 @@ angular.module('alumnos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 's
                     if (error == "Unauthorized") {
                         loginServices.refrescarToken();
                     } else if (error.error) {
-                        $scope.erroresInsertarAlumno = [];
-                        $scope.erroresInsertarAlumno.push({tipoError: 'Todos los campos son requeridos.'})
+                        $scope.erroresInsertarGrupo = [];
+                        $scope.erroresInsertarGrupo.push({tipoError: 'El grupo ya se encuentra activo.'})
                     }
                 });
             }
 
-            /*guardar: edita un alumno enviando los parametros a continuación*/
+            /*guardar: edita un Grupo enviando los parametros a continuación*/
             $scope.guardarEditar = function () {
                 $http({
-                    url: server.serverUrl + '/api/students/' + $scope.editar.id,
+                    url: server.serverUrl + '/api/faculty-members/' + $scope.editar.id,
                     method: "PUT",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                    data: "first_name=" + $scope.editar.first_name + "&last_name=" + $scope.editar.last_name + "&mothers_name=" + $scope.editar.mothers_name +
-                            "&school_group_id=" + $scope.editar.school_group_id + "&gender=" + $scope.editar.gender
+                    data: "first_name=" + $scope.editar.first_name + "&last_name=" + $scope.editar.last_name +
+                            "&email=" + $scope.editar.email + "&contact_number=" + $scope.editar.contact_number +
+                            "&title=Ing."
                 }).success(function (data) {
                     if (data) {
                         swal({
@@ -202,8 +168,8 @@ angular.module('alumnos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 's
                     if (error == "Unauthorized") {
                         loginServices.refrescarToken();
                     } else if (error.error) {
-                        $scope.erroresInsertarAlumno = [];
-                        $scope.erroresInsertarAlumno.push({tipoError: 'Todos los campos son requeridos.'})
+                        $scope.erroresInsertarGrupo = [];
+                        $scope.erroresInsertarGrupo.push({tipoError: 'Todos los campos son requeridos.'})
                     }
                 });
             }
