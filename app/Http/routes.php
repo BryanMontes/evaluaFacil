@@ -37,7 +37,11 @@ Route::get('/nuevaCaptura', ['as' => 'nuevaCaptura', 'uses' => 'Evaluaciones\Nue
 Route::get('/docentes', ['as' => 'docentes', 'uses' => 'Docentes\DocentesController@index']);
 
 /*Alumnos*/
-Route::get('/alumnos', ['as' => 'alumnos', 'uses' => 'Alumnos\AlumnosController@index']);
+Route::get('/listadoGrupos', ['as' => 'listadoGrupos', 'uses' => 'Alumnos\ListadoGruposController@index']);
+Route::get('/alumnos/{id}', ['as' => 'alumnos', 'uses' => 'Alumnos\AlumnosController@index']);
+
+/*Grupos*/
+Route::get('/mis_grupos', ['as' => 'mis_grupos', 'uses' => 'Grupos\GruposController@index']);
 
 
 

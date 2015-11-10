@@ -7,7 +7,6 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
-
 class AlumnosController extends Controller {
 
     /**
@@ -16,10 +15,10 @@ class AlumnosController extends Controller {
      * @return Response
      */
     public function index() {
-        if (Session::get('usuario')) {
+        if (Session::get('tipoUsuario') == "director") {
 
-            // Si tenemos sesión activa, mostrará la página de inicio del maestro
-            return view('alumnos.listado');
+            // Si tenemos sesión activa de tipo director, mostrará la página de inicio del maestro
+            return view('alumnos.listadoAlumnos');
         }
         // Si no hay sesión activa mostramos la pagina principal
         return view('home.home');

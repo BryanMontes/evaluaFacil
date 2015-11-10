@@ -15,25 +15,31 @@
             <input type="button" class="btn btn-primary" ng-click="agregarAlumnoModal()" value="+ Agregar">
         </div>
         <div class="col-md-12">
+            <a href="listadoAlumnos.blade.php"></a>
+            <div class="pad">
+                <h3>Listado de Alumnos <i class="fa fa-child"></i></h3>
+            </div>
+
+
             <!-- BEGIN EXAMPLE TABLE PORTLET-->
-            <div class="portlet box blue">
+            <div class="portlet box blue" ng-show="listarAlumno.length > 0" ng-cloak="">
                 <div class="portlet-body">
-                    <table class="table table-striped table-hover table-bordered" ng-cloak="">
+                    <table class="table table-striped table-hover table-bordered">
                         <thead>
                             <tr>
                                 <th class="col-md-3"><a href="" ng-click="reverse = !reverse;
                                             order('first_name', reverse)">Nombre(s) &nbsp;<i class="fa fa-sort"></i></a>
                                 </th>
                                 <th class="col-md-3"><a href="" ng-click="reverse = !reverse;
-                                    order('last_name', reverse)">Apellido Paterno &nbsp;<i class="fa fa-sort"></i></a></th>
+                                            order('last_name', reverse)">Apellido Paterno &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                    order('mothers_name', reverse)">Apellido Materno &nbsp;<i class="fa fa-sort"></i></a></th>
+                                            order('mothers_name', reverse)">Apellido Materno &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                    order('gender', reverse)">Genero &nbsp;<i class="fa fa-sort"></i></a></th>
+                                            order('gender', reverse)">Genero &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-2">Opciones</th>
                             </tr>
                         </thead>
-                        <tbody  ng-show="listarAlumno.length > 0">
+                        <tbody>
                             <tr ng-repeat="alumno in listarAlumno">
                                 <td>
                                     @{{alumno.first_name}}
@@ -45,8 +51,8 @@
                                     @{{alumno.mothers_name}}
                                 </td>
                                 <td class="center">
-                                    <div ng-if="alumno.gender=='M'">Masculino</div>
-                                    <div ng-if="alumno.gender=='F'">Femenino</div>
+                                    <div ng-if="alumno.gender == 'M'">Masculino</div>
+                                    <div ng-if="alumno.gender == 'F'">Femenino</div>
                                 </td>
                                 <td>
                                     <a class="delete" style="color: red;" href="javascript:;" ng-click="borrarAlumno(alumno.id)">
@@ -57,7 +63,11 @@
                             </tr>
                         </tbody>
                     </table>
+
                 </div>
+            </div>
+            <div ng-show="listarAlumno.length == 0" class="pad" ng-cloak="">
+                <h3>Por el momento no hay alumnos capturados.</h3>
             </div>
             <!-- END EXAMPLE TABLE PORTLET-->
         </div>
@@ -67,57 +77,41 @@
                 <h3 class="modal-title">Registrar Alumno</h3>
                 </div> 
                 <div class="modal-body">
+                
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Nombre:</label>
+                <label class="col-md-2">Grupo:</label>
                 <div class="col-md-10">
-                <input type="text" class="form-control" ng-model="alumno.nombre" maxlength="20">
-                </div>
-                </div>
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Apellidos:</label>
-                <div class="col-md-10">
-                <input type="text" class="col-md-12 form-control" ng-model="alumno.apellido" maxlength="20">
+                <input type="text" class="form-control" ng-model="alumno.school_group_id" disabled="">
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Email:</label>
+                <label class="col-md-2">Nombre(s):</label>
                 <div class="col-md-10">
-                <input type="email" class="form-control" ng-model="alumno.email">
+                <input type="text" class="form-control" ng-model="alumno.first_name" maxlength="20">
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Teléfono:</label>
+                <label class="col-md-2">Apellido Paterno:</label>
                 <div class="col-md-10">
-                <input type="text" class="form-control" ng-model="alumno.telefono" maxlength="10">
+                <input type="text" class="col-md-12 form-control" ng-model="alumno.last_name" maxlength="20">
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Usuario:</label>
+                <label class="col-md-2">Apellido Materno:</label>
                 <div class="col-md-10">
-                <input type="text" class="form-control" ng-model="alumno.usuario" maxlength="20">
+                <input type="text" class="col-md-12 form-control" ng-model="alumno.mothers_name" maxlength="20">
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2 control-label" for="Rol">Rol:</label>
+                <label class="col-md-2 control-label" for="genero">Genero:</label>
                 <div class="col-md-10">
-                <select id="Rol" name="Rol" class="form-control" ng-model="alumno.rol">
-                <option value="teacher">Maestro</option>
-                <option value="director">Director</option>
+                <select id="genero" name="genero" class="form-control" ng-model="alumno.gender">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
                 </select>
                 </div>
                 </div>
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Contraseña:</label>
-                <div class="col-md-10">
-                <input type="password" class="form-control" ng-model="alumno.contrasena" maxlength="10">
-                </div>
-                </div>
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Confirmar Contraseña:</label>
-                <div class="col-md-10">
-                <input type="password" class="form-control" ng-model="alumno.confirmContrasena" maxlength="10">
-                </div>
-                </div>
+                
 
                 </div>
                 <div class="modal-footer">
@@ -136,27 +130,36 @@
                 </div> 
                 <div class="modal-body">
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Nombre:</label>
+                <label class="col-md-2">Grupo:</label>
+                <div class="col-md-10">
+                <input type="text" class="form-control" ng-model="alumno.school_group_id" disabled="">
+                </div>
+                </div>
+                <div class="col-md-12 pad-inputs">
+                <label class="col-md-2">Nombre(s):</label>
                 <div class="col-md-10">
                 <input type="text" class="form-control" ng-model="editar.first_name" maxlength="20">
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Apellidos:</label>
+                <label class="col-md-2">Apellido Paterno:</label>
                 <div class="col-md-10">
                 <input type="text" class="col-md-12 form-control" ng-model="editar.last_name" maxlength="20">
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Email:</label>
+                <label class="col-md-2">Apellido Materno:</label>
                 <div class="col-md-10">
-                <input type="email" class="form-control" ng-model="editar.email">
+                <input type="text" class="col-md-12 form-control" ng-model="editar.mothers_name" maxlength="20">
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Teléfono:</label>
+                <label class="col-md-2 control-label" for="genero">Genero:</label>
                 <div class="col-md-10">
-                <input type="text" class="form-control" ng-model="editar.contact_number" maxlength="10">
+                <select id="genero" name="genero" class="form-control" ng-model="editar.gender">
+                <option value="M">Masculino</option>
+                <option value="F">Femenino</option>
+                </select>
                 </div>
                 </div>
 
@@ -190,22 +193,22 @@
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                    <label class="col-md-3">Nombre de usuario:</label>
-                    <div class="col-md-9">
-                        <input type="email" class="form-control" ng-model="recuperarPassword.user.username" disabled="">
-                    </div>
+                <label class="col-md-3">Nombre de usuario:</label>
+                <div class="col-md-9">
+                <input type="email" class="form-control" ng-model="recuperarPassword.user.username" disabled="">
+                </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                    <label class="col-md-3">Nueva Contraseña:</label>
-                    <div class="col-md-9">
-                        <input type="password" class="form-control" ng-model="recuperarPassword.nuevoPassword" maxlength="10">
-                    </div>
+                <label class="col-md-3">Nueva Contraseña:</label>
+                <div class="col-md-9">
+                <input type="password" class="form-control" ng-model="recuperarPassword.nuevoPassword" maxlength="10">
+                </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
-                    <label class="col-md-3">Confirmar Contraseña:</label>
-                    <div class="col-md-9">
-                        <input type="password" class="form-control" ng-model="recuperarPassword.confirmarPassword" maxlength="10">
-                    </div>
+                <label class="col-md-3">Confirmar Contraseña:</label>
+                <div class="col-md-9">
+                <input type="password" class="form-control" ng-model="recuperarPassword.confirmarPassword" maxlength="10">
+                </div>
                 </div>
 
                 </div>

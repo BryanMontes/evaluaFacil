@@ -48,7 +48,7 @@
                     <!-- BEGIN TOP BAR MENU -->
                     <div class="col-md-7 col-xs-7 additional-shop-info">
 
-                        @if(Session::get('usuario'))
+                        @if(Session::get('tipoUsuario') == "teacher" || Session::get('tipoUsuario') == "director")
                         <ul class="nav navbar-nav ">
                             <li class="classic-menu-dropdown no_pad">
                                 <a data-close-others="true" data-hover="megamenu-dropdown" href="javascript:;" data-toggle="dropdown" class="hover-initialized bold">
@@ -57,15 +57,11 @@
                                 <ul class="dropdown-menu pull-left">
                                     <li>
                                         <a href="/consolidado">
-                                            <i class="fa fa-bookmark-o"></i> Consolidado de reportes </a>
+                                            <i class="fa fa-copy"></i> Consolidado de reportes </a>
                                     </li>
                                     <li>
                                         <a href="/reportes">
-                                            <i class="fa fa-user"></i> Reportes General </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-puzzle-piece"></i> Section 3 </a>
+                                            <i class="fa fa-file-text"></i> Reportes General </a>
                                     </li>
                                 </ul>
                             </li>
@@ -78,27 +74,17 @@
                                 <ul class="dropdown-menu pull-left">
                                     <li>
                                         <a href="/evaluaciones">
-                                            <i class="fa fa-bookmark-o"></i> Evaluaciones </a>
+                                            <i class="fa fa-legal"></i> Evaluaciones </a>
                                     </li>
                                     <li>
                                         <a href="/seleccionBimestre">
-                                            <i class="fa fa-user"></i> Selección de bimestre </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-puzzle-piece"></i> Section 3 </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-gift"></i> Section 4 </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-table"></i> Section 5 </a>
+                                            <i class="fa fa-key"></i> Selección de bimestre </a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
+                        @endif
+                        @if(Session::get('tipoUsuario') == "director")
                         <ul class="nav navbar-nav">
                             <li class="classic-menu-dropdown no_pad">
                                 <a data-close-others="true" data-hover="megamenu-dropdown" href="javascript:;" data-toggle="dropdown" class="hover-initialized bold">
@@ -119,12 +105,8 @@
                                 </a>
                                 <ul class="dropdown-menu pull-left">
                                     <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-bookmark-o"></i> Section 1 </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-user"></i> Section 2 </a>
+                                        <a href="/mis_grupos">
+                                            <i class="fa fa-group"></i> Mis Grupos </a>
                                     </li>
                                     <li>
                                         <a href="javascript:;">
@@ -157,13 +139,14 @@
                                 </a>
                                 <ul class="dropdown-menu pull-left">
                                     <li>
-                                        <a href="/alumnos">
+                                        <a href="/listadoGrupos">
                                             <i class="fa fa-mortar-board"></i> Listado </a>
                                     </li>
                                 </ul>
                             </li>
                         </ul>
                         @endif
+                        
 
                     </div>
                     @if(!Session::get('usuario'))
@@ -283,14 +266,14 @@
         {!!Html::script('librerias/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js')!!}
         {!!Html::script('librerias/assets/global/plugins/bootstrap-markdown/lib/markdown.js')!!}
 
-        
-        
+
+
         {!!Html::script('librerias/assets/global/scripts/metronic.js')!!}
         {!!Html::script('librerias/assets/admin/layout/scripts/layout.js')!!}
         {!!Html::script('librerias/assets/admin/layout/scripts/quick-sidebar.js')!!}
         {!!Html::script('librerias/assets/admin/layout/scripts/demo.js')!!}
         {!!Html::script('librerias/assets/admin/pages/scripts/form-validation.js')!!}
-        
+
 
         <!-- END PAGE LEVEL STYLES -->
 

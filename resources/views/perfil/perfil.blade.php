@@ -9,15 +9,19 @@
 
         <div class="col-md-6 pad-inputs">
             <label>Nombre</label>
-            <input ng-model="perfil.nombre" class="form-control"> 
+            <input ng-model="perfil.first_name" class="form-control" maxlength="30"> 
         </div>
         <div class="col-md-6 pad-inputs">
             <label>Apellidos</label>
-            <input ng-model="perfil.apellido_paterno" class="form-control">
+            <input ng-model="perfil.last_name" class="form-control" maxlength="30">
         </div>
         <div class="col-md-6 pad-inputs">
             <label>Número de telefono</label>
-            <input ng-model="perfil.telefono" class="form-control"> 
+            <input ng-model="perfil.contact_number" class="form-control" maxlength="10"> 
+        </div>
+        <div class="col-md-6 pad-inputs">
+            <label>Titulo</label>
+            <input ng-model="perfil.title" class="form-control">
         </div>
         <div class="col-md-6 pad-inputs">
             <label>E-mail</label>
@@ -25,11 +29,12 @@
         </div>
         <div class="col-md-6 pad-inputs">
             <label>Puesto</label>
-            <input ng-model="perfil.puesto" disabled="" class="form-control">
+            <input ng-model="perfil.user.role" disabled="" class="form-control">
         </div>
+        
 
         <div class="col-md-12 text-center">
-            <input class="btn btn-success" type="button" value="Guardar Cambios" ng-click="boton()"> 
+            <input class="btn btn-success" type="button" value="Guardar Cambios" ng-click="editarPerfil()"> 
             <input class="btn" type="button" value="Cancelar" onclick="window.location='/'"> 
         </div>
 
