@@ -3,9 +3,14 @@
 @section('contenedor')
 
 {!!Html::style('css/select.css')!!}
-{!!Html::style('css/reportes.css')!!}
 
 <div class="row">
+    <div class="page-bar col-md-12 no_pad">
+        <div class="col-md-3 pad">
+            <i class="fa fa-home"></i>
+            <a href="/">Home</a>
+        </div>
+    </div>
     <div class="col-md-12 pad">
         <div class="col-md-6 col-xs-6">
             <select class="selectpicker col-md-5 col-xs-5" style="display: none;" data-style="btn-default" title="Bimestre">

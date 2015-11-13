@@ -58,3 +58,19 @@ ul#strength {
     position:fixed;
     bottom:5px;
 }
+
+.contorno{
+    border: 1px solid;
+    margin-bottom:5%;
+}
+.caja_blanca{
+    background-color: #fff;
+    border-radius: 5px !important;
+    box-shadow: 0 0 3px #000;
+}
+.margen_arriba{
+    margin-top: 3%;
+}
+.margen_abajo{
+    margin-top: 3%;
+}

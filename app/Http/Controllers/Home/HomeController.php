@@ -31,13 +31,12 @@ class HomeController extends Controller {
      * @return Response
      */
     public function login(Request $request) {
-        if ($request->usuario != "" && $request->access_token != "" && $request->refresh_token != "" && $request->tipoUsuario!="") {
+        if ($request->usuario != "" && $request->access_token != "" && $request->refresh_token != "" && $request->tipoUsuario != "") {
             Session::put('usuario', $request->usuario);
             Session::put('tipoUsuario', $request->tipoUsuario);
             Session::put('access_token', $request->access_token);
             Session::put('refresh_token', $request->refresh_token);
             return json_encode(array("status" => TRUE));
-            
         } else {
             return view('home.home');
         }
