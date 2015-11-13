@@ -11,11 +11,22 @@
 @section('contenedor')
 <div class="row" ng-app="alumnos">
     <div class="row" ng-controller="listado" ng-init="listarAlumnos()">
-        <div class="pad text-right col-md-12">
-            <input type="button" class="btn btn-primary" ng-click="agregarAlumnoModal()" value="+ Agregar">
+
+        <div class="page-bar col-md-12 no_pad">
+            <div class="col-md-4 pad">
+                <i class="fa fa-home"></i>
+                <a href="/">Home</a>
+                <i class="fa fa-angle-right"></i>
+                <a href="/listadoGrupos">Listado de Grupos</a>
+                <i class="fa fa-angle-right"></i>
+                <a href="javascript:;">Listado de alumnos</a>
+            </div>
+            <div class="pad text-right col-md-8">
+                <input type="button" class="btn btn-primary" ng-click="agregarAlumnoModal()" value="+ Agregar">
+            </div>
         </div>
+
         <div class="col-md-12">
-            <a href="listadoAlumnos.blade.php"></a>
             <div class="pad">
                 <h3>Listado de Alumnos <i class="fa fa-child"></i></h3>
             </div>
@@ -25,18 +36,18 @@
             <div class="portlet box blue" ng-show="listarAlumno.length > 0" ng-cloak="">
                 <div class="portlet-body">
                     <table class="table table-striped table-hover table-bordered">
-                        <thead>
+                        <thead style="background-color: #FCF8E9;">
                             <tr>
                                 <th class="col-md-3"><a href="" ng-click="reverse = !reverse;
-                                            order('first_name', reverse)">Nombre(s) &nbsp;<i class="fa fa-sort"></i></a>
+                                            order('first_name', reverse)"><i class="fa fa-graduation-cap"></i> Nombre(s) &nbsp;<i class="fa fa-sort"></i></a>
                                 </th>
                                 <th class="col-md-3"><a href="" ng-click="reverse = !reverse;
-                                            order('last_name', reverse)">Apellido Paterno &nbsp;<i class="fa fa-sort"></i></a></th>
+                                            order('last_name', reverse)"><i class="fa fa-user"></i> Apellido Paterno &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                            order('mothers_name', reverse)">Apellido Materno &nbsp;<i class="fa fa-sort"></i></a></th>
+                                            order('mothers_name', reverse)"><i class="fa fa-user"></i> Apellido Materno &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                            order('gender', reverse)">Genero &nbsp;<i class="fa fa-sort"></i></a></th>
-                                <th class="col-md-2">Opciones</th>
+                                            order('gender', reverse)"><i class="fa fa-female "></i>/<i class="fa fa-male "></i> Genero &nbsp;<i class="fa fa-sort"></i></a></th>
+                                <th class="col-md-2"><i class="fa fa-cogs"></i> Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -77,7 +88,7 @@
                 <h3 class="modal-title">Registrar Alumno</h3>
                 </div> 
                 <div class="modal-body">
-                
+
                 <div class="col-md-12 pad-inputs">
                 <label class="col-md-2">Grupo:</label>
                 <div class="col-md-10">
@@ -111,7 +122,7 @@
                 </select>
                 </div>
                 </div>
-                
+
 
                 </div>
                 <div class="modal-footer">
@@ -126,7 +137,7 @@
         <div>
             <script type="text/ng-template" id="editarAlumno">
                 <div class="modal-header">
-                <h3 class="modal-title">Editar Alumno</h3>
+                <h3 class="modal-title"><i class="fa-pencil fa" style="font-size:30px;"></i> Editar Alumno</h3>
                 </div> 
                 <div class="modal-body">
                 <div class="col-md-12 pad-inputs">

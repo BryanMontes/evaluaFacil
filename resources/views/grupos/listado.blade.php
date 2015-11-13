@@ -11,10 +11,21 @@
 @section('contenedor')
 <div class="row" ng-app="grupos">
     <div class="row" ng-controller="listado" ng-init="listarGrupos()">
-        <div class="pad text-right col-md-12">
-            <input type="button" class="btn btn-primary" ng-click="agregarGrupoModal()" value="+ Agregar">
+
+        <div class="page-bar col-md-12 no_pad">
+            <div class="col-md-3 pad">
+                <i class="fa fa-home"></i>
+                <a href="/">Home</a>
+                <i class="fa fa-angle-right"></i>
+                <a href="#">Listado de Grupos</a>
+            </div>
+            <div class="pad text-right col-md-9">
+                <input type="button" class="btn btn-primary" ng-click="agregarGrupoModal()" value="+ Agregar">
+            </div>
         </div>
+
         <div class="col-md-12">
+
             <div>
                 <h3>Listado de grupos <i class="fa fa-group"></i></h3>
             </div>
@@ -23,16 +34,16 @@
             <div class="portlet box blue">
                 <div class="portlet-body">
                     <table class="table table-striped table-hover table-bordered" ng-cloak="">
-                        <thead>
+                        <thead style="background-color: #FCF8E9;">
                             <tr>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                            order('grade_id', reverse)">Grado &nbsp;<i class="fa fa-sort"></i></a>
+                                            order('grade_id', reverse)"><i class="fa fa-book"></i> Grado &nbsp;<i class="fa fa-sort"></i></a>
                                 </th>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                            order('group_name', reverse)">Grupo &nbsp;<i class="fa fa-sort"></i></a></th>
+                                            order('group_name', reverse)"><i class="fa-language fa"></i> Grupo &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                            order('total_students', reverse)">Total de alumnos &nbsp;<i class="fa fa-sort"></i></a></th>
-                                <th class="col-md-3">Opciones</th>
+                                            order('total_students', reverse)"><i class="fa fa-users"></i>  Total de alumnos &nbsp;<i class="fa fa-sort"></i></a></th>
+                                <th class="col-md-3"><i class="fa fa-cogs"></i> Opciones</th>
                             </tr>
                         </thead>
                         <tbody  ng-show="listarGrupo.length > 0">
@@ -63,7 +74,7 @@
         <div>
             <script type="text/ng-template" id="agregarGrupo">
                 <div class="modal-header">
-                <h3 class="modal-title">Registrar Grupo</h3>
+                <h3 class="modal-title"><i class="fa-edit fa" style="font-size:30px;"></i> Registrar Grupo</h3>
                 </div> 
                 <div class="modal-body">
 
@@ -98,7 +109,7 @@
         <div>
             <script type="text/ng-template" id="editarGrupo">
                 <div class="modal-header">
-                <h3 class="modal-title">Editar Grupo</h3>
+                <h3 class="modal-title"><i class="fa-pencil fa" style="font-size:30px;"></i> Editar Grupo</h3>
                 </div> 
                 <div class="modal-body">
                 <div class="col-md-12 pad-inputs">

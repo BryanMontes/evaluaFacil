@@ -3,7 +3,7 @@
     <!-- Head BEGIN -->
     <head>
         <meta charset="utf-8">
-        <title>Evalua Fácil | CET III</title>
+        <title>Evalúa Fácil | CET III</title>
         <!--Escalado para moviles-->
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -30,7 +30,7 @@
         <!--END Nuestros estilos -->
 
     </head>
-    <body>
+    <body style="background-color:#FFF;">
 
         <div class="pre-header gris">
             <div class="container" style="width: 95% !important; ">
@@ -40,7 +40,7 @@
 
                         <ul class="list-unstyled list-inline text-left">
 <!--                            <a href="/"><img src="{!!asset('images/logo.png')!!}" style="width: 200px; height: 80px;"></a>-->
-                            <a href="/"><h1 class="bold">EvaluaFácil</h1></a>
+                            <a href="/"><h1 class="bold">EvalúaFácil</h1></a>
                         </ul>
 
                     </div>
@@ -93,7 +93,7 @@
                                 <ul class="dropdown-menu pull-left">
                                     <li>
                                         <a href="/docentes">
-                                            <i class="fa fa-bookmark-o"></i> Listado </a>
+                                            <i class="fa fa-folder-open"></i> Listado </a>
                                     </li>
                                 </ul>
                             </li>
@@ -146,14 +146,14 @@
                             </li>
                         </ul>
                         @endif
-                        
+
 
                     </div>
                     @if(!Session::get('usuario'))
                     <div class="col-md-2 col-xs-2 additional-shop-info text-center" id="loginRegister">
                         <div ng-controller="iniciarSesion" id="login">
-                            <div class="col-md-6">
-                                <h4 ng-click="iniciarS()" style="cursor: pointer; line-height: 34px;color:black;" id="Ingresar">Ingresar</h4>
+                            <div class="col-md-12">
+                                <h4 ng-click="iniciarS()" style="cursor: pointer; line-height: 34px;color:black;" id="Ingresar"><i class="fa fa-key"></i> Ingresar</h4>
                             </div>
 
 
@@ -161,7 +161,7 @@
                             <!--modal-->
                             <script type="text/ng-template" id="inicioSesion">
                                 <div class="modal-header">
-                                <h3 class="modal-title col-md-11 col-xs-11">Iniciar Sesión</h3>
+                                <h3 class="modal-title col-md-11 col-xs-11 bold"><i class="fa fa-unlock" style="font-size:30px;"></i> Iniciar Sesión</h3>
                                 <div class="glyphicon glyphicon-remove" ng-click="ok()" style="cursor:pointer;"></div>
                                 </div>
 
@@ -172,14 +172,14 @@
 
                                 <div class="col-md-6 col-md-offset-3 form-group input-group">
                                 <input name="password" ng-model="sesion.password" id="password" class="form-control" placeholder="Contraseña" type="password">
-                                <a ng-click="Recuperar_password()">¿Olvidaste tu contraseña?</a>
+                                <a ng-click="Recuperar_password()" class="bold">¿Olvidaste tu contraseña?</a>
 
                                 </div>
 
                                 </div>
                                 <div class="modal-footer">
 
-                                <button class="btn btn-primary center-block" ng-click="ingresar()">INGRESAR</button>
+                                <button class="btn btn-primary center-block bold" ng-click="ingresar()" ><i class="fa fa-key "></i> INGRESAR</button>
                                 <ul ng-show="erroresIniciarS.length > 0" class="alert alert-danger text-center" style="margin-top: 10px;" ng-cloak>
                                 <li ng-repeat="error in erroresIniciarS">@{{error.tipoError}}</li>
                                 </ul>
@@ -192,7 +192,7 @@
                     </div>
 
                     @else
-                    <div class="col-md-2 col-sm-2 additional-shop-info text-center" id="loginRegister2" style="font-size: 21px">
+                    <div class="col-md-2 col-sm-2 additional-shop-info text-center no_pad" id="loginRegister2" style="font-size: 21px">
                         <ul class="nav navbar-nav pull-right" ng-controller="iniciarSesion">
                             <li class="dropdown dropdown-user">
                                 <a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle" href="javascript:;">
@@ -228,19 +228,21 @@
 
             <hr style="margin: 0px;">  
         </div>
-
-        <div class="container">
-            <div class="content">
-                @yield('contenedor')
+        <article style="margin-bottom: 7%;">
+            <div class="container">
+                <div class="content">
+                    @yield('contenedor')
+                </div>
             </div>
-        </div>
+        </article>
         <footer>            
             <div class="footer text-center segundo-pie">
                 <div class="container">
                     <div class="row">
                         <!-- BEGIN COPYRIGHT -->
-                        <div class="col-md-12 col-sm-12 padding-top-10">
-                            <a href="/">Aviso de Privacidad</a> | ® Derechos reservados a CET III
+                        <div class="col-md-12 col-sm-12">
+                            <!--<a href="/">Aviso de Privacidad</a> |-->
+                            ® Derechos reservados a CET III
                         </div>
                         <!-- END COPYRIGHT -->
                     </div>

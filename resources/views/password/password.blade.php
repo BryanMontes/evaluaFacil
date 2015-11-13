@@ -5,8 +5,13 @@
 
 <div class="row" ng-app="password">
     <div class="col-md-12" ng-controller="cambiarPassword">
-
-        <h3 class="text-center pad">Cambiar contraseña</h3>
+        <div class="col-md-12 pad">
+            <i class="fa fa-home"></i>
+            <a href="/" style="color: black;">Home</a>
+            <i class="fa fa-angle-right"></i>
+            <a href="javascript:;" style="color: black;">Cambiar contraseña</a>
+        </div>
+        <h3 class="text-center pad"><i class="fa fa-exchange" style="font-size: 30px;"></i> Cambiar contraseña</h3>
         <div class="col-md-6 form-group input-group center-block pad">
             <label>Contraseña Anterior</label>
             <input type="password" placeholder="Contraseña Anterior*" class="form-control ng-pristine ng-valid ng-touched" ng-model="password.anterior">
