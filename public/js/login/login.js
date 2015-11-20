@@ -54,6 +54,7 @@ angular.module('loginRegister', ['ui.bootstrap', 'LocalStorageModule', 'servicio
                             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                     }).success(function (data) {
                         if (localStorageService.isSupported) {
+                            localStorageService.clearAll();
                             localStorageService.set("session", data);
                             localStorageService.set("usuario", $scope.sesion.usuario);
                             loginServices.tipoUsuario();

@@ -122,12 +122,8 @@
                                 </a>
                                 <ul class="dropdown-menu pull-left">
                                     <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-bookmark-o"></i> Section 1 </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-user"></i> Section 2 </a>
+                                        <a href="/administracion">
+                                            <i class="fa fa-bookmark-o"></i> Fechas Indicadores </a>
                                     </li>
                                 </ul>
                             </li>
@@ -172,7 +168,7 @@
 
                                 <div class="col-md-6 col-md-offset-3 form-group input-group">
                                 <input name="password" ng-model="sesion.password" id="password" class="form-control" placeholder="Contraseña" type="password">
-                                <a ng-click="Recuperar_password()" class="bold">¿Olvidaste tu contraseña?</a>
+
 
                                 </div>
 
@@ -250,6 +246,8 @@
             </div>
             <!-- END FOOTER -->
         </footer>
+        
+        <!--{!!Html::script('js/dependencias/jquery-2.1.4.js')!!}-->
         {!!Html::script('js/dependencias/sweetalert-dev.js')!!}
         {!!Html::script('librerias/jquery.min.js')!!}
         {!!Html::script('librerias/jquery-migrate.min.js')!!}
