@@ -49,7 +49,6 @@ angular.module('servicios', ['LocalStorageModule'])
                         access_token: localStorageService.get('session').access_token,
                         refresh_token: localStorageService.get('session').refresh_token,
                         tipoUsuario: localStorageService.get('userType')
-
                     },
                 }).success(function (data) {
                     if (data.status) {

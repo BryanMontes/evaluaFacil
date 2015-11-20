@@ -32,6 +32,7 @@ class HomeController extends Controller {
      */
     public function login(Request $request) {
         if ($request->usuario != "" && $request->access_token != "" && $request->refresh_token != "" && $request->tipoUsuario != "") {
+            Session::flush();
             Session::put('usuario', $request->usuario);
             Session::put('tipoUsuario', $request->tipoUsuario);
             Session::put('access_token', $request->access_token);

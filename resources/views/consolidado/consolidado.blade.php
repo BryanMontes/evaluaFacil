@@ -8,9 +8,9 @@
 <div class="row">
     <div class="col-md-4 pad">
         <i class="fa fa-home"></i>
-        <a href="/" style="color: black;">Home</a>
+        <a href="/">Home</a>
         <i class="fa fa-angle-right"></i>
-        <a href="javascript:;" style="color: black;">Consolidado</a>
+        <a href="javascript:;">Consolidado</a>
     </div>
     <h3 class="text-center pad col-md-12">Consolidado</h3>
     <div class="col-md-12 col-xs-12 caja_blanca contorno margen_arriba">

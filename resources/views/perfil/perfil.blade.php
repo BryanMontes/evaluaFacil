@@ -7,9 +7,9 @@
     <div class="col-md-12" ng-controller="informacionPerfil">
         <div class="col-md-12 pad">
             <i class="fa fa-home"></i>
-            <a href="/" style="color: black;">Home</a>
+            <a href="/">Home</a>
             <i class="fa fa-angle-right"></i>
-            <a href="javascript:;" style="color: black;">Perfil de usuario</a>
+            <a href="javascript:;">Perfil de usuario</a>
         </div>
         <h3 class="text-center pad"><i class="fa fa-user" style="font-size: 30px;"></i> Perfil de usuario</h3>
 

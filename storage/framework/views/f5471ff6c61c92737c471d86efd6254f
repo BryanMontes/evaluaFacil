@@ -55,7 +55,8 @@
                                     {{docente.user.username}}
                                 </td>
                                 <td class="center">
-                                    {{docente.asignaciones}}
+                                    <!--{{docente.asignaciones}}-->
+                                    <a href="/asignaciones/{{docente.id}}">Asignaciones del docente</a>
                                 </td>
                                 <td>
                                     <a class="delete" style="color: red;" href="javascript:;" ng-click="borrarDocente(docente.id)">

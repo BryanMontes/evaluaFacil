@@ -26,7 +26,7 @@ Route::get('/perfil', ['as' => 'perfil', 'uses' => 'Perfil\PerfilController@inde
 
 /*Cambiar contraseña*/
 Route::get('/cambiarPassword', ['as' => 'cambiarPassword', 'uses' => 'Password\PasswordController@index']);
-Route::post('/cambioPass', ['as' => 'cambioPass', 'uses' => 'Password\PasswordController@cambioPass']);
+Route::get('/cambioPass', ['as' => 'cambioPass', 'uses' => 'Password\PasswordController@cambioPass']);
 
 /*Evaluaciones*/
 Route::get('/evaluaciones', ['as' => 'evaluaciones', 'uses' => 'Evaluaciones\EvaluacionesController@index']);
@@ -35,6 +35,7 @@ Route::get('/nuevaCaptura', ['as' => 'nuevaCaptura', 'uses' => 'Evaluaciones\Nue
 
 /*Docentes*/
 Route::get('/docentes', ['as' => 'docentes', 'uses' => 'Docentes\DocentesController@index']);
+Route::get('/asignaciones/{id}', ['as' => 'asignaciones', 'uses' => 'Docentes\AsignacionesController@index']);
 
 /*Alumnos*/
 Route::get('/listadoGrupos', ['as' => 'listadoGrupos', 'uses' => 'Alumnos\ListadoGruposController@index']);
@@ -42,6 +43,11 @@ Route::get('/alumnos/{id}', ['as' => 'alumnos', 'uses' => 'Alumnos\AlumnosContro
 
 /*Grupos*/
 Route::get('/mis_grupos', ['as' => 'mis_grupos', 'uses' => 'Grupos\GruposController@index']);
+
+/*Administracion*/
+Route::get('/administracion', ['as' => 'administracion', 'uses' => 'Administracion\AdministracionController@index']);
+Route::get('/materias', ['as' => 'materias', 'uses' => 'Administracion\MateriasController@index']);
+
 
 
 
