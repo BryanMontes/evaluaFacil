@@ -13,7 +13,7 @@
 /*Inicio de sesión home*/
 Route::get('/', ['as' => 'home', 'uses' => 'Home\HomeController@index']);
 Route::post('login', ['as' => 'login', 'uses' => 'Home\HomeController@login']);
-Route::put('logOutSesionUsuario', ['as' => 'logOutSesionUsuario', 'uses' => 'Home\HomeController@logOutSesionUsuario']);
+Route::get('logOut', ['as' => 'logOut', 'uses' => 'Home\HomeController@logOut']);
 
 /*Reportes*/
 Route::get('/reportes', ['as' => 'reportes', 'uses' => 'Reportes\ReportesController@index']);

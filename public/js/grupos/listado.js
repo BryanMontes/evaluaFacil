@@ -20,7 +20,7 @@ angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'se
                         headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                     }).success(function (data) {
-                        $scope.listarGrupo = data;
+                        $scope.listarGrupo = data.data;
                     }).error(function (error, status, headers, config) {
                         if (error == "Unauthorized") {
                             loginServices.refrescarToken();

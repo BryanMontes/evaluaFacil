@@ -20,7 +20,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                         headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                     }).success(function (data) {
-                        $scope.listarDocente = data;
+                        $scope.listarDocente = data.data;
                     }).error(function (error, status, headers, config) {
                         if (error == "Unauthorized") {
                             loginServices.refrescarToken();

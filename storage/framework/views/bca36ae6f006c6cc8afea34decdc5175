@@ -86,10 +86,6 @@
                                         <a href="/evaluaciones">
                                             <i class="fa fa-legal"></i> Evaluaciones </a>
                                     </li>
-                                    <li>
-                                        <a href="/seleccionBimestre">
-                                            <i class="fa fa-key"></i> Selección de bimestre </a>
-                                    </li>
                                 </ul>
                             </li>
                         </ul>
