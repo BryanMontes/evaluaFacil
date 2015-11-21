@@ -310,7 +310,7 @@ Custom Scrollbars
 
 ::-moz-selection {
   color: #fff;
-  background: #e45000;
+  background: #001780;
 }
 ::selection {
   color: #fff;
@@ -1377,7 +1377,7 @@ div.content-form-page .checkbox-list {
 
 
 .nav-tabs {
-	border-color: #e6400c;
+	border-color: #001780;
 	padding-bottom: 1px;
 	font-size: 14px;
 	margin-bottom: 0;
@@ -1390,7 +1390,7 @@ div.content-form-page .checkbox-list {
 	border: none !important;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-	background: #e6400c;
+	background: #001780;
 	color: #fff;
 	padding: 5px 15px 4px;
 }

@@ -49,8 +49,9 @@ class HomeController extends Controller {
      * @param  Request  $request
      * @return Response
      */
-    public function logOutSesionUsuario() {
+    public function logOut() {
         Session::flush();
+        
         return json_encode(array("status" => true));
     }
 

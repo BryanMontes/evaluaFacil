@@ -20,7 +20,7 @@ angular.module('asignaciones', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate
                 headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
             }).success(function (data) {
-                $scope.listarInfoDocente = data;
+                $scope.listarInfoDocente = data.data;
                 $scope.listarAsignacion();
             }).error(function (error, status, headers, config) {
                 if (error == "Unauthorized") {
@@ -38,7 +38,7 @@ angular.module('asignaciones', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate
                         headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                     }).success(function (data) {
-                        $scope.listarAsignaciones = data;
+                        $scope.listarAsignaciones = data.data;
                     }).error(function (error, status, headers, config) {
                         if (error == "Unauthorized") {
                             loginServices.refrescarToken();

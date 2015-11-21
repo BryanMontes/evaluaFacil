@@ -2,6 +2,7 @@
 angular.module('servicios', ['LocalStorageModule'])
         .service('loginServices', function ($http, localStorageService, server) {
             var self = this;
+            self.allocations = [];
             self.refrescarToken = function () {
                 console.log('entró a refrescar token');
                 $http({
@@ -31,6 +32,12 @@ angular.module('servicios', ['LocalStorageModule'])
                 }).success(function (data) {
                     if (localStorageService.isSupported) {
                         localStorageService.set('userType', data.user.role);
+                        for (var x = 0; x < data.allocations.length; x++) {
+                            if (self.allocations.indexOf(data.allocations[x].group.id) == -1) {
+                                self.allocations.push(data.allocations[x].group.id);
+                            }
+                        }
+                        localStorageService.set('asignaciones', self.allocations);
                         self.guardarSession();
                     }
 
@@ -60,16 +67,12 @@ angular.module('servicios', ['LocalStorageModule'])
             self.salirSession = function () {
                 localStorageService.remove('session');
                 $http({
-                    url: 'logOutSesionUsuario',
-                    method: "PUT",
+                    url: 'logOut',
+                    method: "get",
                 }).success(function (data) {
                     localStorageService.clearAll();
-                    if (data.status)
-                        location.reload();
+                    location.reload();
                 })
-            }
-            self.mensaje = function () {
-                console.log('wiiii');
             }
 
         })

@@ -52,7 +52,7 @@
                                     {{docente.last_name}}
                                 </td>
                                 <td>
-                                    {{docente.user.username}}
+                                    {{docente.user_data.username}}
                                 </td>
                                 <td class="center">
                                     <!--{{docente.asignaciones}}-->
