@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
-class SeleccionBimestreController extends Controller {
+class EvaluarAlumnoController extends Controller {
 
     /**
      * Display a listing of the resource.
@@ -16,10 +16,10 @@ class SeleccionBimestreController extends Controller {
      * @return Response
      */
     public function index() {
-        if (Session::get('usuario')) {
+        if (Session::get('tipoUsuario') == "director" || Session::get('tipoUsuario') == "teacher") {
 
             // Si tenemos sesión activa, mostrará la página de inicio del maestro
-            return view('evaluaciones.seleccionBimestre');
+            return view('evaluaciones.evaluarAlumno');
         }
         // Si no hay sesión activa mostramos la pagina principal
         return view('home.home');
@@ -33,4 +33,5 @@ class SeleccionBimestreController extends Controller {
     public function traerEvaluaciones(Request $request) {
         
     }
+
 }

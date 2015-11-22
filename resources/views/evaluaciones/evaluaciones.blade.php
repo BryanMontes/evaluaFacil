@@ -47,13 +47,6 @@
                                                     <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
                                                                 order('gender', reverse)"><i class="fa fa-female "></i>/<i class="fa fa-male "></i> Genero &nbsp;<i class="fa fa-sort"></i></a>
                                                     </th>
-                                                    <th class="col-md-1"><a href="" ng-click="reverse = !reverse;
-                                                                order('gender', reverse)"> Faltas &nbsp;<i class="fa fa-sort"></i></a>
-                                                    </th>
-                                                    <th class="col-md-1"><a href="" ng-click="reverse = !reverse;
-                                                                order('gender', reverse)"> Participación &nbsp;<i class="fa fa-sort"></i></a>
-                                                    </th>
-
                                                     <th class="col-md-2"><i class="fa fa-pencil"></i> Evaluación</th>
                                                 </tr>
                                             </thead>
@@ -73,14 +66,7 @@
                                                         <div ng-if="alumno.gender == 'F'">Femenino</div>
                                                     </td>
                                                     <td>
-                                                        9
-                                                    </td>
-                                                    <td>
-                                                        8
-                                                    </td>
-
-                                                    <td>
-                                                        <a class="delete" href="javascript:;" ng-click="evaluarAlumno(alumno.id)">
+                                                        <a href="/evaluaralumno/@{{alumno.id}}/@{{local}}">
                                                             <i class="fa fa-pencil"></i> Evaluar&nbsp;&nbsp;</a>
                                                     </td>
                                                 </tr>
@@ -94,88 +80,12 @@
                                 </div>
                                 <!-- END EXAMPLE TABLE PORTLET-->
                             </div>
-
-
-
                         </div>
+                        
+                        
                     </div>
                 </div>
             </div>   
-
-            <div class="col-md-12">
-
-            </div>
-            <div>
-                <script type="text/ng-template" id="evaluarAlumno">
-                    <div class="modal-header">
-                    <h3 class="modal-title"><i class="fa fa-pencil-square-o" style="font-size:30px;"></i> Indicadores del Alumno</h3>
-                    </div> 
-                    <div class="modal-body">
-
-                    <div class="col-md-12 pad-inputs">
-                    <label class="col-md-2">Alumno: </label>
-                    <div class="col-md-10 bold">
-                    @{{alumno.first_name}} @{{alumno.last_name}}                
-                    </div>
-                    </div>
-                    <div class="col-md-12 pad-inputs">
-                    <label class="col-md-2">Faltas:</label>
-                    <div class="col-md-10">
-                    <input type="text" class="form-control" ng-model="alumno.absences_count" maxlength="20">
-                    </div>
-                    </div>
-
-                    <div class="col-md-12 pad-inputs">
-                    <label class="col-md-2">Participación:</label>
-                    <div class="col-md-10">
-                    <select class="form-control" ng-model="alumno.participation_score">
-                    <option value="1" selected>1</option>
-                    <option value="2">2</option>
-                    </select>
-                    </div>
-                    </div>
-
-                    <div class="col-md-12 pad-inputs">
-                    <label class="col-md-2">Desempeño:</label>
-                    <div class="col-md-10">
-                    <input type="text" class="col-md-12 form-control" ng-model="alumno.performance_score" maxlength="20">
-                    </div>
-                    </div>
-                    <div class="col-md-12 pad-inputs">
-                    <label class="col-md-2 control-label" for="genero">Comprensión lectora:</label>
-                    <div class="col-md-10">
-                    <select id="genero" name="genero" class="form-control" ng-model="alumno.reading_score">
-                    <option value="1">Buena</option>
-                    <option value="2">Regular</option>
-                    </select>
-                    </div>
-                    </div>
-                    <div class="col-md-12 pad-inputs">
-                    <label class="col-md-2 control-label" for="genero">Comprensión matemática:</label>
-                    <div class="col-md-10">
-                    <input type="text" class="col-md-12 form-control" ng-model="alumno.math_score" maxlength="20">
-                    </div>
-                    </div>
-                    <div class="col-md-12 pad-inputs">
-                    <label class="col-md-2 control-label" for="genero">Convivencia escolar:</label>
-                    <div class="col-md-10">
-                    <select id="genero" name="genero" class="form-control" ng-model="alumno.friendship_score">
-                    <option value="1">Buena</option>
-                    <option value="2">Regular</option>
-                    </select>
-                    </div>
-                    </div>
-
-                    </div>
-                    <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" ng-click="evaluar()">Guardar</button>
-                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
-                    <ul ng-show="erroresInsertarAlumno.length > 0" class="alert alert-danger text-center" style="margin-top: 10px;" ng-cloak>
-                    <li ng-repeat="error in erroresInsertarAlumno">@{{error.tipoError}}</li>
-                    </ul>
-                    </div>
-                </script>
-            </div> 
         </div>
     </div>
 </div>
