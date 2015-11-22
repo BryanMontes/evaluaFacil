@@ -40,7 +40,7 @@ angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'se
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                 }).success(function (data) {
-                    $scope.editar = data;
+                    $scope.editar = data.data;
                     $scope.editarGrupoModal();
                 }).error(function (error, status, headers, config) {
                     if (error == "Unauthorized") {
@@ -103,6 +103,15 @@ angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'se
             $scope.editar = items;
             $scope.recuperarPassword = items;
             $scope.listargrupo = [];
+            
+            setTimeout(function () {
+                $('.form-control').keyup(function () {
+                    if (this.value.match(/[^A-Z ]/g)) {
+                        this.value = this.value.replace(/[^A-Z ]/g, '');
+                    }
+                });
+
+            }, 100)
 
             /*guardar: guarda un grupo enviando los parametros a continuación*/
             $scope.guardarGrupo = function () {
@@ -141,18 +150,16 @@ angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'se
             /*guardar: edita un Grupo enviando los parametros a continuación*/
             $scope.guardarEditar = function () {
                 $http({
-                    url: server.serverUrl + '/api/faculty-members/' + $scope.editar.id,
+                    url: server.serverUrl + '/api/school-groups/' + $scope.editar.id,
                     method: "PUT",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                    data: "first_name=" + $scope.editar.first_name + "&last_name=" + $scope.editar.last_name +
-                            "&email=" + $scope.editar.email + "&contact_number=" + $scope.editar.contact_number +
-                            "&title=Ing."
+                    data: "group_name=" + $scope.editar.group_name 
                 }).success(function (data) {
                     if (data) {
                         swal({
                             title: "Éxito",
-                            text: "El usuario " + $scope.editar.first_name + " ha sido editado correctamente",
+                            text: "El grupo " + $scope.editar.grade_id + "º ha sido editado correctamente",
                             type: "success",
                             showCancelButton: false,
                             confirmButtonText: "Ok",
@@ -169,7 +176,7 @@ angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'se
                         loginServices.refrescarToken();
                     } else if (error.error) {
                         $scope.erroresInsertarGrupo = [];
-                        $scope.erroresInsertarGrupo.push({tipoError: 'Todos los campos son requeridos.'})
+                        $scope.erroresInsertarGrupo.push({tipoError: error.message})
                     }
                 });
             }

@@ -113,27 +113,16 @@
                 </div> 
                 <div class="modal-body">
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Nombre:</label>
+                <label class="col-md-2 control-label" for="Rol">Grado:</label>
                 <div class="col-md-10">
-                <input type="text" class="form-control" ng-model="editar.first_name" maxlength="20">
+                <input type="letra" class="form-control" ng-model="editar.grade_id" maxlength="1" disabled="">
                 </div>
                 </div>
+
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Apellidos:</label>
+                <label class="col-md-2">Grupo/Letra:</label>
                 <div class="col-md-10">
-                <input type="text" class="col-md-12 form-control" ng-model="editar.last_name" maxlength="20">
-                </div>
-                </div>
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Email:</label>
-                <div class="col-md-10">
-                <input type="email" class="form-control" ng-model="editar.email">
-                </div>
-                </div>
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Teléfono:</label>
-                <div class="col-md-10">
-                <input type="text" class="form-control" ng-model="editar.contact_number" maxlength="10">
+                <input type="letra" class="form-control" ng-model="editar.group_name" maxlength="1">
                 </div>
                 </div>
 

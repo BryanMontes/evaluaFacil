@@ -138,6 +138,15 @@ angular.module('alumnos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 's
             $scope.editar = items;
             $scope.listarAlumno = [];
 
+
+            setTimeout(function () {
+                $('.form-control').keyup(function () {
+                    if (this.value.match(/[^A-Z ]/g)) {
+                        this.value = this.value.replace(/[^A-Z ]/g, '');
+                    }
+                });
+
+            }, 100)
             /*guardar: guarda un alumno enviando los parametros a continuación*/
             $scope.guardar = function () {
                 $http({

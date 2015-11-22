@@ -40,7 +40,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                 }).success(function (data) {
-                    $scope.editar = data;
+                    $scope.editar = data.data;
                     $scope.editarDocenteModal();
                 }).error(function (error, status, headers, config) {
                     if (error == "Unauthorized") {
@@ -57,7 +57,7 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
                 }).success(function (data) {
-                    $scope.editar = data;
+                    $scope.editar = data.data;
                     $scope.recuperarPasswordDocenteModal();
                 }).error(function (error, status, headers, config) {
                     if (error == "Unauthorized") {
@@ -135,6 +135,14 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             $scope.editar = items;
             $scope.recuperarPassword = items;
             $scope.listarDocente = [];
+
+            setTimeout(function () {
+                $('.form-control').keyup(function () {
+                    if (this.value.match(/[^A-Z 0-9]/g)) {
+                        this.value = this.value.replace(/[^A-Z 0-9]/g, '');
+                    }
+                });
+            }, 100)
 
             /*guardar: guarda un docente enviando los parametros a continuación*/
             $scope.guardar = function () {

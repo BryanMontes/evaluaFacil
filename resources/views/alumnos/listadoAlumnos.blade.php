@@ -90,7 +90,7 @@
                 <div class="modal-body">
 
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Grupo:</label>
+                <label class="col-md-2">ID Grupo:</label>
                 <div class="col-md-10">
                 <input type="text" class="form-control" ng-model="alumno.school_group_id" disabled="">
                 </div>
@@ -141,7 +141,7 @@
                 </div> 
                 <div class="modal-body">
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Grupo:</label>
+                <label class="col-md-2">ID Grupo:</label>
                 <div class="col-md-10">
                 <input type="text" class="form-control" ng-model="alumno.school_group_id" disabled="">
                 </div>
