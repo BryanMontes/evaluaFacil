@@ -104,10 +104,6 @@
                                         <a href="/mis_grupos">
                                             <i class="fa fa-group"></i> Mis Grupos </a>
                                     </li>
-                                    <li>
-                                        <a href="javascript:;">
-                                            <i class="fa fa-puzzle-piece"></i> Section 3 </a>
-                                    </li>
                                 </ul>
                             </li>
                         </ul>

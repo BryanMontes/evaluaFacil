@@ -134,7 +134,7 @@ angular.module('asignaciones', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate
                 data: $scope.asignacion.ides
             }).success(function (data) {
                 if (data) {
-                    $scope.listarAsignaciones = data;
+                    $scope.listarAsignaciones = data.data;
                 }
             }).error(function (error, status, headers, config) {
                 if (error == "Unauthorized") {

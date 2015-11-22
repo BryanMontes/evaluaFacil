@@ -17,7 +17,7 @@
                 <i class="fa fa-home"></i>
                 <a href="/">Home</a>
                 <i class="fa fa-angle-right"></i>
-                <a href="/docentes">Asignaciones</a>
+                <a href="/docentes">Docentes</a>
                 <i class="fa fa-angle-right"></i>
                 <a href="javascript:;">Editar asignaciones</a>
             </div>

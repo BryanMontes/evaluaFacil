@@ -10108,3 +10108,58 @@ Stack trace:
 #51 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(87): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
 #52 /var/www/frontend.mx/public_html/evaluaFacil/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
 #53 {main}  
+[2015-11-22 16:39:42] local.ERROR: exception 'ErrorException' with message 'file_put_contents(/var/www/frontend.mx/public_html/evaluaFacil/storage/framework/sessions/bb6f1abf7cfeb5cc8cee3aec1b4734e332678af1): failed to open stream: Permission denied' in /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:81
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/var/www/fronte...', 81, Array)
+#1 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(81): file_put_contents('/var/www/fronte...', 'a:4:{s:9:"_prev...', 2)
+#2 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/FileSessionHandler.php(71): Illuminate\Filesystem\Filesystem->put('/var/www/fronte...', 'a:4:{s:9:"_prev...', true)
+#3 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/Store.php(262): Illuminate\Session\FileSessionHandler->write('bb6f1abf7cfeb5c...', 'a:4:{s:9:"_prev...')
+#4 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(88): Illuminate\Session\Store->save()
+#5 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#6 /var/www/frontend.mx/public_html/evaluaFacil/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#7 {main}  
+[2015-11-22 20:08:27] local.ERROR: exception 'Illuminate\Session\TokenMismatchException' in /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php:53
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#1 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(124): call_user_func_array(Array, Array)
+#2 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(54): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#3 [internal function]: Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#4 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(124): call_user_func_array(Array, Array)
+#5 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(62): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#6 [internal function]: Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#7 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(124): call_user_func_array(Array, Array)
+#8 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#9 [internal function]: Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#10 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(124): call_user_func_array(Array, Array)
+#11 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(59): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#12 [internal function]: Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#13 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(124): call_user_func_array(Array, Array)
+#14 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(42): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 [internal function]: Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(124): call_user_func_array(Array, Array)
+#17 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#18 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#19 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(122): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#20 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(87): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#21 /var/www/frontend.mx/public_html/evaluaFacil/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#22 {main}  
+[2015-11-22 20:08:37] local.ERROR: exception 'ErrorException' with message 'file_put_contents(/var/www/frontend.mx/public_html/evaluaFacil/storage/framework/sessions/bd945cace7df579feffa4df02a515f2ba82c4065): failed to open stream: Permission denied' in /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:81
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/var/www/fronte...', 81, Array)
+#1 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(81): file_put_contents('/var/www/fronte...', 'a:4:{s:6:"_toke...', 2)
+#2 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/FileSessionHandler.php(71): Illuminate\Filesystem\Filesystem->put('/var/www/fronte...', 'a:4:{s:6:"_toke...', true)
+#3 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/Store.php(262): Illuminate\Session\FileSessionHandler->write('bd945cace7df579...', 'a:4:{s:6:"_toke...')
+#4 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(88): Illuminate\Session\Store->save()
+#5 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#6 /var/www/frontend.mx/public_html/evaluaFacil/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#7 {main}  
+[2015-11-22 20:08:53] local.ERROR: exception 'ErrorException' with message 'file_put_contents(/var/www/frontend.mx/public_html/evaluaFacil/storage/framework/sessions/bd945cace7df579feffa4df02a515f2ba82c4065): failed to open stream: Permission denied' in /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php:81
+Stack trace:
+#0 [internal function]: Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'file_put_conten...', '/var/www/fronte...', 81, Array)
+#1 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Filesystem/Filesystem.php(81): file_put_contents('/var/www/fronte...', 'a:6:{s:7:"usuar...', 2)
+#2 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/FileSessionHandler.php(71): Illuminate\Filesystem\Filesystem->put('/var/www/fronte...', 'a:6:{s:7:"usuar...', true)
+#3 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/Store.php(262): Illuminate\Session\FileSessionHandler->write('bd945cace7df579...', 'a:6:{s:7:"usuar...')
+#4 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(88): Illuminate\Session\Store->save()
+#5 /var/www/frontend.mx/public_html/evaluaFacil/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(145): Illuminate\Session\Middleware\StartSession->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#6 /var/www/frontend.mx/public_html/evaluaFacil/public/index.php(58): Illuminate\Foundation\Http\Kernel->terminate(Object(Illuminate\Http\Request), Object(Illuminate\Http\Response))
+#7 {main}  
