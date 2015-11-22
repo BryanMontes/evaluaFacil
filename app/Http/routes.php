@@ -30,8 +30,7 @@ Route::get('/cambioPass', ['as' => 'cambioPass', 'uses' => 'Password\PasswordCon
 
 /*Evaluaciones*/
 Route::get('/evaluaciones', ['as' => 'evaluaciones', 'uses' => 'Evaluaciones\EvaluacionesController@index']);
-Route::get('/seleccionBimestre', ['as' => 'seleccionBimestre', 'uses' => 'Evaluaciones\SeleccionBimestreController@index']);
-Route::get('/nuevaCaptura', ['as' => 'nuevaCaptura', 'uses' => 'Evaluaciones\NuevaCapturaController@index']);
+Route::get('/evaluaralumno/{id}/{idGrupo}', ['as' => 'evaluaralumno', 'uses' => 'Evaluaciones\EvaluarAlumnoController@index']);
 
 /*Docentes*/
 Route::get('/docentes', ['as' => 'docentes', 'uses' => 'Docentes\DocentesController@index']);

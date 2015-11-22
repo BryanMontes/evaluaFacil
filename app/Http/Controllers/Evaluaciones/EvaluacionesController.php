@@ -16,7 +16,7 @@ class EvaluacionesController extends Controller {
      * @return Response
      */
     public function index() {
-        if (Session::get('usuario')) {
+        if (Session::get('tipoUsuario') == "director" || Session::get('tipoUsuario') == "teacher") {
 
             // Si tenemos sesión activa, mostrará la página de inicio del maestro
             return view('evaluaciones.evaluaciones');
