@@ -1,7 +1,7 @@
 'use strict';
 angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'servicios'])
         .controller('listado', function ($scope, localStorageService, $http, $uibModal, loginServices, $filter, server) {
-            
+
             $scope.listarGrupo = [];
             $scope.editar = [];
             /*orderBy: ordena los grupos por los campos seleccionados*/
@@ -30,7 +30,42 @@ angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'se
             }
 
             $scope.borrarGrupo = function (id) {
-                console.log(id);
+                swal({
+                    title: "Atención",
+                    text: "¿Está seguro que desea eliminar este grupo?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Ok",
+                    closeOnConfirm: true,
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        $http({
+                            url: server.serverUrl + '/api/school-groups/' + id,
+                            method: "DELETE",
+                            headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
+                                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+                        }).success(function (data) {
+                            if (data.success) {
+                                swal({
+                                    title: "Éxito!",
+                                    text: "El grupo ha sido borrado correctamente",
+                                    type: "success",
+                                    showCancelButton: false,
+                                    confirmButtonText: "Ok",
+                                    closeOnConfirm: true,
+                                }, function (isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    }
+                                })
+                            }
+                        }).error(function (error, status, headers, config) {
+                            if (error == "Unauthorized") {
+                                loginServices.refrescarToken();
+                            }
+                        });
+                    }
+                })
             }
             /*editarGrupo: edita el Grupo seleccionado, se envia el ID y se manda al modalInstanse el objeto del Grupo*/
             $scope.editarGrupo = function (id) {
@@ -103,7 +138,7 @@ angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'se
             $scope.editar = items;
             $scope.recuperarPassword = items;
             $scope.listargrupo = [];
-            
+
             setTimeout(function () {
                 $('.form-control').keyup(function () {
                     if (this.value.match(/[^A-Z ]/g)) {
@@ -154,7 +189,7 @@ angular.module('grupos', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', 'se
                     method: "PUT",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                    data: "group_name=" + $scope.editar.group_name 
+                    data: "group_name=" + $scope.editar.group_name
                 }).success(function (data) {
                     if (data) {
                         swal({

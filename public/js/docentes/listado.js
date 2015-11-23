@@ -29,8 +29,41 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                 }
             }
 
-            $scope.borrarDocente = function (id) {
-                console.log(id);
+            $scope.borrarDocente = function (id, nombre) {
+                swal({
+                    title: "Atención",
+                    text: "¿Está seguro que desea dar de baja al docente " + nombre + "?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Ok",
+                    closeOnConfirm: true,
+                }, function (isConfirm) {
+                    if (isConfirm) {
+                        $http({
+                            url: server.serverUrl + '/api/faculty-members/' + id,
+                            method: "DELETE",
+                            headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
+                                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+                        }).success(function (data) {
+                            swal({
+                                title: "Éxito!",
+                                text: "El docente ha sido borrado correctamente",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonText: "Ok",
+                                closeOnConfirm: true,
+                            }, function (isConfirm) {
+                                if (isConfirm) {
+                                    location.reload();
+                                }
+                            })
+                        }).error(function (error, status, headers, config) {
+                            if (error == "Unauthorized") {
+                                loginServices.refrescarToken();
+                            }
+                        });
+                    }
+                })
             }
             /*editarDocente: edita el docente seleccionado, se envia el ID y se manda al modalInstanse el objeto del docente*/
             $scope.editarDocente = function (id) {
@@ -136,14 +169,6 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             $scope.recuperarPassword = items;
             $scope.listarDocente = [];
 
-            setTimeout(function () {
-                $('.form-control').keyup(function () {
-                    if (this.value.match(/[^A-Z 0-9]/g)) {
-                        this.value = this.value.replace(/[^A-Z 0-9]/g, '');
-                    }
-                });
-            }, 100)
-
             /*guardar: guarda un docente enviando los parametros a continuación*/
             $scope.guardar = function () {
                 if ($scope.docente.contrasena == $scope.docente.confirmContrasena) {
@@ -223,41 +248,36 @@ angular.module('docentes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
 
             /*recuperarPasswordDocente: se restaura la contraseña del docente seleccionado*/
             $scope.recuperarPasswordDocente = function () {
-                if ($scope.recuperarPassword.nuevoPassword == $scope.recuperarPassword.confirmarPassword) {
-                    $http({
-                        url: server.serverUrl + '/api/faculty-members/' + $scope.recuperarPassword.id,
-                        method: "PUT",
-                        headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
-                            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                        data: "new_password=" + $scope.recuperarPassword.nuevoPassword
-                    }).success(function (data) {
-                        if (data) {
-                            swal({
-                                title: "Éxito",
-                                text: "El usuario " + $scope.editar.first_name + " ha sido editado correctamente",
-                                type: "success",
-                                showCancelButton: false,
-                                confirmButtonText: "Ok",
-                                closeOnConfirm: true,
-                            }, function (isConfirm) {
-                                if (isConfirm) {
-                                    $uibModalInstance.close();
-                                    location.reload();
-                                }
-                            })
-                        }
-                    }).error(function (error, status, headers, config) {
-                        if (error == "Unauthorized") {
-                            loginServices.refrescarToken();
-                        } else if (error.error) {
-                            $scope.erroresInsertarDocente = [];
-                            $scope.erroresInsertarDocente.push({tipoError: 'Todos los campos son requeridos.'})
-                        }
-                    });
-                } else {
-                    $scope.erroresInsertarDocente = [];
-                    $scope.erroresInsertarDocente.push({tipoError: 'Las contraseñas no coinciden.'})
-                }
+                $http({
+                    url: server.serverUrl + '/api/faculty-members/' + $scope.recuperarPassword.id + '/change-password',
+                    method: "PUT",
+                    headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                    data: "new_password=" + $scope.recuperarPassword.nuevoPassword + "&confirm_password=" + $scope.recuperarPassword.confirmarPassword
+                }).success(function (data) {
+                    if (data) {
+                        swal({
+                            title: "Éxito",
+                            text: "El usuario " + $scope.editar.first_name + " ha sido editado correctamente",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonText: "Ok",
+                            closeOnConfirm: true,
+                        }, function (isConfirm) {
+                            if (isConfirm) {
+                                $uibModalInstance.close();
+                                location.reload();
+                            }
+                        })
+                    }
+                }).error(function (error, status, headers, config) {
+                    if (error == "Unauthorized") {
+                        loginServices.refrescarToken();
+                    } else if (error.error) {
+                        $scope.erroresInsertarDocente = [];
+                        $scope.erroresInsertarDocente.push({tipoError: 'Todos los campos son requeridos.'})
+                    }
+                });
             }
             /*cancel: cierra el modal*/
             $scope.cancel = function () {

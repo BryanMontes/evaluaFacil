@@ -60,7 +60,7 @@
                                     <a href="/asignaciones/@{{docente.id}}">Asignaciones del docente</a>
                                 </td>
                                 <td>
-                                    <a class="delete" style="color: red;" href="javascript:;" ng-click="borrarDocente(docente.id)">
+                                    <a class="delete" style="color: red;" href="javascript:;" ng-click="borrarDocente(docente.id,docente.user_data.username)">
                                         <i class="fa fa-trash-o"></i> Eliminar&nbsp;&nbsp;</a>
                                     <a class="delete" href="javascript:;" ng-click="editarDocente(docente.id)">
                                         <i class="fa fa-pencil"></i> Editar&nbsp;&nbsp;</a>

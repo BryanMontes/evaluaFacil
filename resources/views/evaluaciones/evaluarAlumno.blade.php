@@ -20,8 +20,8 @@
             </div>
             <div class="portlet-body" ng-cloak="" ng-init="arregloMaterias()">
                 <ul class="nav nav-tabs">
-                    <li ng-repeat="materia in arregloMateria.missing" ng-class="{'active' :$first}">
-                        <a data-toggle="tab" href="#@{{materia.title}}">
+                    <li ng-repeat="materia in arregloMateria.missing" ng-class="{'active tabss' :$first}" >
+                        <a data-toggle="tab"  href="#@{{materia.title}}" class="signatureName">
                             @{{materia.title}} </a>
                     </li>
                 </ul>
@@ -120,20 +120,20 @@
                 <input type="text" class="col-md-12 form-control" ng-model="alumno.performance_score" maxlength="3">
                 </div>
                 </div>
-                <div class="col-md-12 pad-inputs">
+                <div class="col-md-12 pad-inputs" ng-if="nombreMateria=='Español'">
                 <label class="col-md-2 control-label">Comprensión lectora:</label>
                 <div class="col-md-10">
                 <input type="text" class="col-md-12 form-control" ng-model="alumno.reading_score" maxlength="3">
 
                 </div>
                 </div>
-                <div class="col-md-12 pad-inputs">
+                <div class="col-md-12 pad-inputs" ng-if="nombreMateria=='Matemáticas'">
                 <label class="col-md-2 control-label">Comprensión matemática:</label>
                 <div class="col-md-10">
                 <input type="text" class="col-md-12 form-control" ng-model="alumno.math_score" maxlength="3">
                 </div>
                 </div>
-                <div class="col-md-12 pad-inputs">
+                <div class="col-md-12 pad-inputs" ng-if="nombreMateria=='FormaciónCívicayÉtica'">
                 <label class="col-md-2 control-label">Convivencia escolar:</label>
                 <div class="col-md-10">
                 <input type="text" class="col-md-12 form-control" ng-model="alumno.friendship_score" maxlength="3">
@@ -142,7 +142,7 @@
 
                 </div>
                 <div class="modal-footer">
-                <button class="btn btn-primary" type="button" ng-click="evaluar()">Guardar</button>
+                <button class="btn btn-primary" type="button" ng-click="bimestreActual()">Guardar</button>
                 <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
                 <ul ng-show="erroresInsertarAlumno.length > 0" class="alert alert-danger text-center" style="margin-top: 10px;" ng-cloak>
                 <li ng-repeat="error in erroresInsertarAlumno">@{{error.tipoError}}</li>

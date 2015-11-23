@@ -31,6 +31,9 @@
         <div class="col-md-6 form-group input-group center-block">
             <button ng-click="cambiarPass()" class="btn btn-primary"><i class="fa fa-exchange"></i> Cambiar contraseña</button>
         </div>
+        <ul ng-show="erroresInsertarDocente.length > 0" class="alert alert-danger text-center" style="margin-top: 10px;" ng-cloak>
+            <li ng-repeat="error in erroresInsertarDocente">@{{error.tipoError}}</li>
+        </ul>
 
     </div>
 </div>

@@ -14,7 +14,11 @@ angular.module('seleccionBimestre', ['ui.bootstrap', 'LocalStorageModule', 'ngAn
                 }).success(function (data) {
                     for (var x = 0; x < data.data.length; x++) {
                         if (data.data[x].id == document.location.href.split("/")[document.location.href.split("/").length - 2]) {
-                            $scope.arregloMateria = data.data[x];
+                            if (data.data[x].missing.length != 0) {
+                                $scope.arregloMateria = data.data[x];
+                            }else{
+                                window.location.href = "/evaluaciones";
+                            }
                         }
 
                     }
@@ -59,6 +63,9 @@ angular.module('seleccionBimestre', ['ui.bootstrap', 'LocalStorageModule', 'ngAn
                         },
                         idMateria: function () {
                             return $scope.idMateria;
+                        },
+                        nombreMateria: function () {
+                            return $(".active").html().split(">")[1].replace(/ /g, "").split("<")[0].replace("\n", "");
                         }
                     }
                 });
@@ -82,10 +89,10 @@ angular.module('seleccionBimestre', ['ui.bootstrap', 'LocalStorageModule', 'ngAn
 
         })
         /*InstanciaAlumno: funcionalidad de todos los modals para crear o editar un alumno*/
-        .controller('InstanciaAlumno', function ($scope, $uibModalInstance, items, idMateria, $http, loginServices, localStorageService, server) {
-
-
+        .controller('InstanciaAlumno', function ($scope, $uibModalInstance, items, nombreMateria, idMateria, $http, loginServices, localStorageService, server) {
+            $scope.bimestres = [];
             $scope.alumno = items;
+            $scope.nombreMateria = nombreMateria;
             $scope.idMateria = idMateria;
             $scope.listarAlumno = [];
             setTimeout(function () {
@@ -96,11 +103,38 @@ angular.module('seleccionBimestre', ['ui.bootstrap', 'LocalStorageModule', 'ngAn
                 });
 
             }, 100)
+            $scope.bimestreActual = function () {
+                $http({
+                    url: server.serverUrl + '/api/bimesters',
+                    method: "GET",
+                    headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+                }).success(function (data) {
+                    for (var x = 0; x < data.data.length; x++) {
+                        var bimestreStart = new Date(data.data[x].start_timestamp * 1000);
+                        var bimestreFinish = new Date(data.data[x].end_timestamp * 1000);
+                        var fechaActual = new Date();
+                        if (fechaActual >= bimestreStart && fechaActual <= bimestreFinish) {
+                            $scope.evaluar(data.data[x].bimester_number)
+                        }
+                    }
+
+
+                }).error(function (error, status, headers, config) {
+                    if (error == "Unauthorized") {
+                        loginServices.refrescarToken();
+                    } else if (error.error) {
+                        $scope.erroresInsertarAlumno = [];
+                        $scope.erroresInsertarAlumno.push({tipoError: 'Todos los campos son requeridos.'})
+                    }
+                });
+
+            }
 
             /*evaluar: evaluar un alumno enviando los parametros a continuación*/
-            $scope.evaluar = function () {
+            $scope.evaluar = function (bimestre) {
                 $http({
-                    url: server.serverUrl + '/api/evaluations/bimester/1/student/' + $scope.alumno.id,
+                    url: server.serverUrl + '/api/evaluations/bimester/' + bimestre + '/student/' + $scope.alumno.id,
                     method: "PUT",
                     headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
                         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
