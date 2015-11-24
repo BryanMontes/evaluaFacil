@@ -185,53 +185,6 @@
                 </div>
             </script>
         </div>
-        <div>
-            <script type="text/ng-template" id="recuperarPasswordAlumno">
-                <div class="modal-header">
-                <h3 class="modal-title">Reinicializar Contraseña</h3>
-                </div> 
-                <div class="modal-body">
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-3">Nombre:</label>
-                <div class="col-md-9">
-                <input type="text" class="form-control" ng-model="recuperarPassword.first_name" maxlength="20" disabled="">
-                </div>
-                </div>
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-3">Apellidos:</label>
-                <div class="col-md-9">
-                <input type="text" class="col-md-12 form-control" ng-model="recuperarPassword.last_name" maxlength="20" disabled="">
-                </div>
-                </div>
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-3">Nombre de usuario:</label>
-                <div class="col-md-9">
-                <input type="email" class="form-control" ng-model="recuperarPassword.user.username" disabled="">
-                </div>
-                </div>
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-3">Nueva Contraseña:</label>
-                <div class="col-md-9">
-                <input type="password" class="form-control" ng-model="recuperarPassword.nuevoPassword" maxlength="10">
-                </div>
-                </div>
-                <div class="col-md-12 pad-inputs">
-                <label class="col-md-3">Confirmar Contraseña:</label>
-                <div class="col-md-9">
-                <input type="password" class="form-control" ng-model="recuperarPassword.confirmarPassword" maxlength="10">
-                </div>
-                </div>
-
-                </div>
-                <div class="modal-footer">
-                <button class="btn btn-primary" type="button" ng-click="recuperarPasswordAlumno()">Guardar Cambios</button>
-                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancelar</button>
-                <ul ng-show="erroresInsertarAlumno.length > 0" class="alert alert-danger text-center" style="margin-top: 10px;" ng-cloak>
-                <li ng-repeat="error in erroresInsertarAlumno">@{{error.tipoError}}</li>
-                </ul>
-                </div>
-            </script>
-        </div>
     </div>
 </div>
 

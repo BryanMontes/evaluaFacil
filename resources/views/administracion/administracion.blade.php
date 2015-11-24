@@ -2,6 +2,8 @@
 
 @section('contenedor')
 
+{!!Html::style('librerias/assets/global/css/components-md.css')!!}
+
 <div class="row" ng-app="administracion">
     <div class="row" ng-controller="administrar" ng-init="listarAdministracion()">
         <div class="page-bar col-md-12 no_pad">
@@ -26,30 +28,30 @@
                         <thead style="background-color: #FCF8E9;">
                             <tr>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                            order('first_name', reverse)"><i class="fa fa-user"></i> Bimestre &nbsp;<i class="fa fa-th-list"></i></a>
+                                            order('first_name', reverse)"><i class="fa fa-user"></i>No Bimestre &nbsp;<i class="fa fa-th-list"></i></a>
                                 </th>
-                                <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
+                                <th class="col-md-4"><a href="" ng-click="reverse = !reverse;
                                             order('last_name', reverse)"><i class="fa fa-calendar"></i> Inicia &nbsp;<i class="fa fa-sort"></i></a></th>
-                                <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
+                                <th class="col-md-4"><a href="" ng-click="reverse = !reverse;
                                             order('user.username', reverse)"><i class="fa fa-calendar"></i> Termina &nbsp;<i class="fa fa-sort"></i></a></th>
-                                <th class="col-md-3"><i class="fa fa-cogs"></i> Opciones</th>
+<!--                                <th class="col-md-2"><i class="fa fa-cogs"></i> Opciones</th>-->
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="indicador in listarDataAdministrativa">
                                 <td>
-                                    @{{indicador.bimester}}
+                                    @{{indicador.bimester_number}}
                                 </td>
                                 <td>
-                                    @{{indicador.start}}
+                                    @{{indicador.start_timestamp}}
                                 </td>
                                 <td>
-                                    @{{indicador.finish}}
+                                    @{{indicador.end_timestamp}}
                                 </td>
-                                <td>
-                                    <a class="delete" href="javascript:;" ng-click="editarIndicadores(indicador.id)">
+<!--                                <td>
+                                    <a class="delete" href="javascript:;" ng-click="editarIndicadores(indicador.bimester_number)">
                                         <i class="fa fa-pencil"></i> Editar&nbsp;&nbsp;</a>
-                                </td>
+                                </td>-->
                             </tr>
 
                         </tbody>
@@ -69,21 +71,21 @@
                 </div> 
                 <div class="modal-body">
                 <div class="col-md-12 pad-inputs">
-                <label class="col-md-2">Grupo:</label>
+                <label class="col-md-2">Bimestre:</label>
                 <div class="col-md-10">
-                <input type="text" class="form-control" ng-model="editar.group" maxlength="20" disabled="">
+                <input type="text" class="form-control" ng-model="editar.id" maxlength="2" disabled="">
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
                 <label class="col-md-2">Inicia:</label>
                 <div class="col-md-10">
-                <input type="text" class="col-md-12 form-control" ng-model="editar.start" maxlength="20">
+                <input type="text" class="col-md-12 form-control" ng-model="editar.start_timestamp" maxlength="20" placeholder="año/mes/día">
                 </div>
                 </div>
                 <div class="col-md-12 pad-inputs">
                 <label class="col-md-2">Termina:</label>
                 <div class="col-md-10">
-                <input type="text" class="form-control" ng-model="editar.finish">
+                <input type="text" class="form-control" ng-model="editar.end_timestamp" placeholder="año/mes/día">
                 </div>
                 </div>
 
