@@ -63,8 +63,8 @@ angular.module('asignaciones', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate
                             url: server.serverUrl + '/api/allocations/faculty-member/' + $scope.listarInfoDocente.id,
                             method: "DELETE",
                             headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
-                                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
-                            data: "allocation_id=" + id
+                                'Content-Type': 'application/json'},
+                            data: [{allocation_id: id}]
                         }).success(function (data) {
                             swal({
                                 title: "Éxito!",
@@ -146,7 +146,7 @@ angular.module('asignaciones', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate
             });
 
             $scope.console = function () {
-                $scope.asignaciones=[];
+                $scope.asignaciones = [];
                 for (var x = 0; x < $scope.asignacionDisponible.ides.length; x++) {
                     $scope.asignaciones.push({
                         grade_number: $scope.asignacionDisponible.ides[x].grade.id,
@@ -159,36 +159,36 @@ angular.module('asignaciones', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate
 
             /*guardar: guarda un asignacion enviando los parametros a continuación*/
             $scope.guardar = function () {
-                    $http({
-                        url: server.serverUrl + '/api/allocations/faculty-member/' + document.location.href.split("/")[document.location.href.split("/").length - 1],
-                        method: "PUT",
-                        headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
-                            'Content-Type': 'application/json'},
-                        data: angular.toJson($scope.asignaciones)
-                    }).success(function (data) {
-                        if (data) {
-                            swal({
-                                title: "Éxito",
-                                text: "Las asignaciones del profesor han sido actualizadas",
-                                type: "success",
-                                showCancelButton: false,
-                                confirmButtonText: "Ok",
-                                closeOnConfirm: true,
-                            }, function (isConfirm) {
-                                if (isConfirm) {
-                                    $uibModalInstance.close();
-                                    location.reload();
-                                }
-                            })
-                        }
-                    }).error(function (error, status, headers, config) {
-                        if (error == "Unauthorized") {
-                            loginServices.refrescarToken();
-                        } else if (error.error) {
-                            $scope.erroresInsertarAsignacion = [];
-                            $scope.erroresInsertarAsignacion.push({tipoError: 'Todos los campos son requeridos.'})
-                        }
-                    });
+                $http({
+                    url: server.serverUrl + '/api/allocations/faculty-member/' + document.location.href.split("/")[document.location.href.split("/").length - 1],
+                    method: "PUT",
+                    headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
+                        'Content-Type': 'application/json'},
+                    data: angular.toJson($scope.asignaciones)
+                }).success(function (data) {
+                    if (data) {
+                        swal({
+                            title: "Éxito",
+                            text: "Las asignaciones del profesor han sido actualizadas",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonText: "Ok",
+                            closeOnConfirm: true,
+                        }, function (isConfirm) {
+                            if (isConfirm) {
+                                $uibModalInstance.close();
+                                location.reload();
+                            }
+                        })
+                    }
+                }).error(function (error, status, headers, config) {
+                    if (error == "Unauthorized") {
+                        loginServices.refrescarToken();
+                    } else if (error.error) {
+                        $scope.erroresInsertarAsignacion = [];
+                        $scope.erroresInsertarAsignacion.push({tipoError: 'Todos los campos son requeridos.'})
+                    }
+                });
             }
 
 
