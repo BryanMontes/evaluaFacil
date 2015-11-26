@@ -42,8 +42,6 @@
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
                                             order('id', reverse)"><i class="fa fa-cubes"></i> ID &nbsp;<i class="fa fa-sort"></i></a>
                                 </th>
-                                <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                            order('total_students', reverse)"><i class="fa fa-users"></i> Total de alumnos &nbsp;<i class="fa fa-sort"></i></a></th>
                                 <th class="col-md-2"><i class="fa fa-cogs"></i> Opciones &nbsp;</th>
                             </tr>
                         </thead>
@@ -56,9 +54,6 @@
                                 </td>
                                 <td>
                                     @{{grupo.id}}
-                                </td>
-                                <td>
-                                    @{{grupo.total_students}}
                                 </td>
                                 <td>
                                     <a ng-href="/alumnos/@{{grupo.id}}">

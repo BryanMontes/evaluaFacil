@@ -19,13 +19,13 @@
             </div>
             <div class="portlet-body" ng-cloak="">
                 <ul class="nav nav-tabs">
-                    <li ng-repeat="local in arregloLocal" ng-class="{'active' :$first}" ng-click="listarEvaluaciones(local)">
-                        <a data-toggle="tab" href="#@{{local}}">
-                            @{{local}} </a>
+                    <li ng-repeat="local in arregloLocal" ng-class="{'active' :$first}" ng-click="listarEvaluaciones(local.id_grupo)">
+                        <a data-toggle="tab" href="#@{{local.id_grupo}}">
+                            @{{local.grado}}º@{{local.grupo}} </a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div id="@{{local}}" class="tab-pane fade" ng-repeat="local in arregloLocal" ng-class="{'active in' :$first}">
+                    <div id="@{{local.id_grupo}}" class="tab-pane fade" ng-repeat="local in arregloLocal" ng-class="{'active in' :$first}">
 
                         <div class="row">
                             <div class="col-md-12">
@@ -36,16 +36,16 @@
                                             <thead style="background-color: #FCF8E9;">
                                                 <tr>
                                                     <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                                                order('first_name', reverse)"><i class="fa fa-graduation-cap"></i> Nombre(s) &nbsp;<i class="fa fa-sort"></i></a>
+                                                                    order('first_name', reverse)"><i class="fa fa-graduation-cap"></i> Nombre(s) &nbsp;<i class="fa fa-sort"></i></a>
                                                     </th>
                                                     <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                                                order('last_name', reverse)"><i class="fa fa-user"></i> Apellido Paterno &nbsp;<i class="fa fa-sort"></i></a>
+                                                                    order('last_name', reverse)"><i class="fa fa-user"></i> Apellido Paterno &nbsp;<i class="fa fa-sort"></i></a>
                                                     </th>
                                                     <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                                                order('mothers_name', reverse)"><i class="fa fa-user"></i> Apellido Materno &nbsp;<i class="fa fa-sort"></i></a>
+                                                                    order('mothers_name', reverse)"><i class="fa fa-user"></i> Apellido Materno &nbsp;<i class="fa fa-sort"></i></a>
                                                     </th>
                                                     <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                                                order('gender', reverse)"><i class="fa fa-female "></i>/<i class="fa fa-male "></i> Genero &nbsp;<i class="fa fa-sort"></i></a>
+                                                                    order('gender', reverse)"><i class="fa fa-female "></i>/<i class="fa fa-male "></i> Genero &nbsp;<i class="fa fa-sort"></i></a>
                                                     </th>
                                                     <th class="col-md-2"><i class="fa fa-pencil"></i> Evaluación</th>
                                                 </tr>
@@ -65,9 +65,12 @@
                                                         <div ng-if="alumno.gender == 'M'">Masculino</div>
                                                         <div ng-if="alumno.gender == 'F'">Femenino</div>
                                                     </td>
-                                                    <td>
-                                                        <a href="/evaluaralumno/@{{alumno.id}}/@{{local}}">
+                                                    <td ng-show="alumno.missing.length>0">
+                                                        <a href="/evaluaralumno/@{{alumno.id}}/@{{local.id_grupo}}">
                                                             <i class="fa fa-pencil"></i> Evaluar&nbsp;&nbsp;</a>
+                                                    </td>
+                                                    <td ng-show="alumno.missing.length==0">
+                                                        Ya evaluado  <i class="fa fa-check"></i>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -81,11 +84,9 @@
                                 <!-- END EXAMPLE TABLE PORTLET-->
                             </div>
                         </div>
-                        
-                        
                     </div>
                 </div>
-            </div>   
+            </div>
         </div>
     </div>
 </div>

@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="col-md-12 col-xs-12">
+        <div class="col-md-12 col-xs-12" ng-cloak="" >
             <div class="col-md-5 col-xs-5 contorno text-center caja_blanca">
                 <span class="bold">Asistencia</span>
                 <div id="canvas-holder" style="margin-top: 20px;">
@@ -160,6 +160,13 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+        
+        <div ng-cloak="" ng-show="cargando">
+            <h2>Cargando Información, por favor espere.</h2>
+        </div>
+        <div ng-cloak="" ng-show="cargando==false && asistencias.length == 0 && participacion.length == 0 && desempeno.length == 0 && lectora.length == 0 && matematica.length == 0">
+            <h2>No hay información del bimestre y grupo seleccionado.</h2>
         </div>
     </div>
 

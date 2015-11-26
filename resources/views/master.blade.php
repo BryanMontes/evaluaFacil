@@ -153,12 +153,12 @@
                                 <div class="glyphicon glyphicon-remove" ng-click="ok()" style="cursor:pointer;"></div>
                                 </div>
 
-                                <div class="col-md-6 col-md-offset-3 form-group input-group" style="margin-top:2%;">
+                                <div class="col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3 form-group input-group" style="margin-top:2%;">
                                 <input type="text" name="usuario" ng-model="sesion.usuario" id="usuario" class="form-control" placeholder="Usuario">
                                 </div>
 
 
-                                <div class="col-md-6 col-md-offset-3 form-group input-group">
+                                <div class="col-md-6 col-md-offset-3 col-xs-6 col-xs-offset-3 form-group input-group ng-scope form-group input-group">
                                 <input name="password" ng-model="sesion.password" id="password" class="form-control" placeholder="Contraseña" type="password">
 
 
@@ -238,7 +238,7 @@
             </div>
             <!-- END FOOTER -->
         </footer>
-        
+
         <!--{!!Html::script('js/dependencias/jquery-2.1.4.js')!!}-->
         {!!Html::script('js/dependencias/sweetalert-dev.js')!!}
         {!!Html::script('librerias/jquery.min.js')!!}
@@ -265,10 +265,13 @@
         {!!Html::script('librerias/assets/admin/layout/scripts/quick-sidebar.js')!!}
         {!!Html::script('librerias/assets/admin/layout/scripts/demo.js')!!}
         {!!Html::script('librerias/assets/admin/pages/scripts/form-validation.js')!!}
+        {!!Html::script('librerias/assets/admin/pages/scripts/ui-blockui.js')!!}
+
+
 
 
         <!-- END PAGE LEVEL STYLES -->
-
+        {!!Html::script('js/dependencias/lodash.js')!!}
         {!!Html::script('js/dependencias/angular.min.js')!!}
         {!!Html::script('js/dependencias/animate.js')!!}
         {!!Html::script('js/dependencias/angular-local-storage.min.js')!!}
