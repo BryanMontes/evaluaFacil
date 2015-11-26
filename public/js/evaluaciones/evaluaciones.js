@@ -14,6 +14,25 @@ angular.module('evaluaciones', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate
                 $scope.listarEvaluacion = orderBy($scope.listarEvaluacion, predicate, reverse);
             };
             $scope.order('first_name', false);
+            
+            $scope.listarGrupos = function (id) {
+                if (localStorageService.length() != 0) {
+
+                    $http({
+                        url: server.serverUrl + '/api/evaluations/current/group/pending/' + id,
+                        method: "GET",
+                        headers: {'Authorization': 'Bearer ' + localStorageService.get("session").access_token,
+                            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+                    }).success(function (data) {
+                        $scope.listarEvaluacion = data.data;
+                    }).error(function (error, status, headers, config) {
+                        if (error == "Unauthorized") {
+                            loginServices.refrescarToken();
+                        }
+                    });
+
+                }
+            }
 
             $scope.listarEvaluaciones = function (id) {
                 if (localStorageService.length() != 0) {
@@ -33,5 +52,8 @@ angular.module('evaluaciones', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate
 
                 }
             }
+            
+            
+            
         })
         

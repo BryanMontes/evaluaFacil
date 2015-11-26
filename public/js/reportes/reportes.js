@@ -16,6 +16,7 @@ angular.module('reportes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             $scope.graficaLectora = [];
             $scope.graficaMatematica = [];
             $scope.graficaActitud = [];
+            $scope.cargando = false;
             $scope.llenadoInformacion = function () {
                 $http({
                     url: server.serverUrl + '/api/bimesters',
@@ -62,6 +63,7 @@ angular.module('reportes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
             }
 
             $scope.traerEspecifico = function () {
+                $scope.cargando = true;
                 $http({
                     url: server.serverUrl + '/api/reports/bimester/' + $scope.bimestreId + '/group/' + $scope.grupoId,
                     method: "GET",
@@ -91,13 +93,14 @@ angular.module('reportes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                 return color;
             }
             $scope.llenadoGraficas = function () {
+                $scope.cargando = false;
                 $scope.graficaAsistencias = [];
                 $scope.graficaParticipacion = [];
                 $scope.graficaDesempeno = [];
                 $scope.graficaLectora = [];
                 $scope.graficaMatematica = [];
                 $scope.graficaActitud = [];
-                for (var x = 0; x < $scope.asistencias.length; x++) {
+                for (var x = 1; x < $scope.asistencias.length; x++) {
                     $scope.graficaAsistencias.push({
                         value: ($scope.asistencias[x].ratio * 100).toFixed(2),
                         color: $scope.getRandomColor(),
@@ -106,7 +109,7 @@ angular.module('reportes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                     });
                 }
 
-                for (var x = 0; x < $scope.participacion.length; x++) {
+                for (var x = 1; x < $scope.participacion.length; x++) {
                     $scope.graficaParticipacion.push({
                         value: ($scope.participacion[x].ratio * 100).toFixed(2),
                         color: $scope.getRandomColor(),
@@ -115,7 +118,7 @@ angular.module('reportes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                     });
                 }
 
-                for (var x = 0; x < $scope.desempeno.length; x++) {
+                for (var x = 1; x < $scope.desempeno.length; x++) {
                     $scope.graficaDesempeno.push({
                         value: ($scope.desempeno[x].ratio * 100).toFixed(2),
                         color: $scope.getRandomColor(),
@@ -124,7 +127,7 @@ angular.module('reportes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                     });
                 }
 
-                for (var x = 0; x < $scope.lectora.length; x++) {
+                for (var x = 1; x < $scope.lectora.length; x++) {
                     $scope.graficaLectora.push({
                         value: ($scope.lectora[x].ratio * 100).toFixed(2),
                         color: $scope.getRandomColor(),
@@ -133,7 +136,7 @@ angular.module('reportes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                     });
                 }
 
-                for (var x = 0; x < $scope.matematica.length; x++) {
+                for (var x = 1; x < $scope.matematica.length; x++) {
                     $scope.graficaMatematica.push({
                         value: ($scope.matematica[x].ratio * 100).toFixed(2),
                         color: $scope.getRandomColor(),
@@ -142,7 +145,7 @@ angular.module('reportes', ['ui.bootstrap', 'LocalStorageModule', 'ngAnimate', '
                     });
                 }
 
-                for (var x = 0; x < $scope.actitud.length; x++) {
+                for (var x = 1; x < $scope.actitud.length; x++) {
                     $scope.graficaActitud.push({
                         value: ($scope.actitud[x].ratio * 100).toFixed(2),
                         color: $scope.getRandomColor(),

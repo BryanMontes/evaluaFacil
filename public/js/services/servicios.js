@@ -3,6 +3,7 @@ angular.module('servicios', ['LocalStorageModule'])
         .service('loginServices', function ($http, localStorageService, server) {
             var self = this;
             self.allocations = [];
+            self.allocationsNotRepeated = [];
             self.refrescarToken = function () {
                 console.log('entró a refrescar token');
                 $http({
@@ -34,16 +35,34 @@ angular.module('servicios', ['LocalStorageModule'])
                         localStorageService.set('userType', data.user.role);
                         for (var x = 0; x < data.allocations.length; x++) {
                             if (self.allocations.indexOf(data.allocations[x].group.id) == -1) {
-                                self.allocations.push(data.allocations[x].group.id);
+                                self.allocations.push({
+                                    id_grupo: data.allocations[x].group.id,
+                                    grado: data.allocations[x].grade.grade_number,
+                                    grupo: data.allocations[x].group.group_name
+                                });
                             }
                         }
-                        localStorageService.set('asignaciones', self.allocations);
+
+                        localStorageService.set('asignaciones', self.arrUnique(self.allocations));
                         self.guardarSession();
                     }
 
                 }).error(function (error, status, headers, config) {
                     self.salirSession();
                 });
+            }
+            self.arrUnique = function (arr) {
+                var cleaned = [];
+                self.allocations.forEach(function (itm) {
+                    var unique = true;
+                    cleaned.forEach(function (itm2) {
+                        if (_.isEqual(itm, itm2))
+                            unique = false;
+                    });
+                    if (unique)
+                        cleaned.push(itm);
+                });
+                return cleaned;
             }
 
             self.guardarSession = function () {

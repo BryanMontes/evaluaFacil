@@ -41,8 +41,7 @@
                                 </th>
                                 <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
                                             order('group_name', reverse)"><i class="fa-language fa"></i> Grupo &nbsp;<i class="fa fa-sort"></i></a></th>
-                                <th class="col-md-2"><a href="" ng-click="reverse = !reverse;
-                                            order('total_students', reverse)"><i class="fa fa-users"></i>  Total de alumnos &nbsp;<i class="fa fa-sort"></i></a></th>
+                                
                                 <th class="col-md-3"><i class="fa fa-cogs"></i> Opciones</th>
                             </tr>
                         </thead>
@@ -53,9 +52,6 @@
                                 </td>
                                 <td>
                                     @{{grupo.group_name}}
-                                </td>
-                                <td>
-                                    @{{grupo.total_students}}
                                 </td>
                                 <td>
                                     <a class="delete" style="color: red;" href="javascript:;" ng-click="borrarGrupo(grupo.id)">
@@ -82,9 +78,9 @@
                 <label class="col-md-2 control-label" for="Rol">Grado:</label>
                 <div class="col-md-10">
                 <select id="grado" name="grado" class="form-control" ng-model="grupo.grade_number">
-                <option value="1">1º Secundaria</option>
-                <option value="2">2º Secundaria</option>
-                <option value="3">3º Secundaria</option> 
+                <option value="7">1º Secundaria</option>
+                <option value="8">2º Secundaria</option>
+                <option value="9">3º Secundaria</option> 
                 </select>
                 </div>
                 </div>
